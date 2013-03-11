@@ -471,7 +471,7 @@ namespace Schumix.Irc
 				}
 				catch(Exception e)
 				{
-					Log.Error("Opcodes", sLConsole.Exception("Error"), e);
+					Log.Error("Opcodes", sLConsole.Exception("Error"), e.Message);
 					Thread.Sleep(1000);
 				}
 			}
