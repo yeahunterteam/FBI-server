@@ -56,9 +56,6 @@ namespace Schumix.Framework.Config
 						case 0:
 							new YamlConfig(configdir, _configfile, colorbindmode);
 							break;
-						case 1:
-							new XmlConfig(configdir, _configfile, colorbindmode);
-							break;
 						default:
 							new YamlConfig(configdir, _configfile, colorbindmode);
 							break;
@@ -77,37 +74,8 @@ namespace Schumix.Framework.Config
 
 		private int ConfigType(string ConfigDirectory, string ConfigFile)
 		{
-			if(ConfigFile == "Schumix.yml")
-			{
-				string filename = sUtilities.DirectoryToSpecial(ConfigDirectory, ConfigFile);
-				string filename2 = sUtilities.DirectoryToSpecial(ConfigDirectory, "Schumix.xml");
-
-				if(File.Exists(filename))
-					return 0;
-				else if(File.Exists(filename2))
-				{
-					_configfile = "Schumix.xml";
-					return 1;
-				}
-			}
-			else if(ConfigFile == "Schumix.xml")
-			{
-				string filename = sUtilities.DirectoryToSpecial(ConfigDirectory, ConfigFile);
-				string filename2 = sUtilities.DirectoryToSpecial(ConfigDirectory, "Schumix.yml");
-
-				if(File.Exists(filename))
-					return 1;
-				else if(File.Exists(filename2))
-				{
-					_configfile = "Schumix.yml";
-					return 0;
-				}
-			}
-
 			if(ConfigFile.EndsWith(".yml"))
 				return 0;
-			else if(ConfigFile.EndsWith(".xml"))
-				return 1;
 
 			return 0;
 		}
@@ -126,8 +94,6 @@ namespace Schumix.Framework.Config
 			{
 				case 0:
 					return new YamlConfig().CreateConfig(ConfigDirectory, _configfile, ColorBindMode);
-				case 1:
-					return new XmlConfig().CreateConfig(ConfigDirectory, _configfile, ColorBindMode);
 				default:
 					return new YamlConfig().CreateConfig(ConfigDirectory, _configfile, ColorBindMode);
 			}

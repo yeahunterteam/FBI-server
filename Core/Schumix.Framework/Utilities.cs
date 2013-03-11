@@ -787,9 +787,7 @@ namespace Schumix.Framework
 
 			if(!pidfile.Contains(".pid"))
 			{
-				if(pidfile.Contains(".xml"))
-					pidfile = pidfile.Remove(pidfile.IndexOf(".xml")) + ".pid";
-				else if(pidfile.Contains(".yml"))
+				if(pidfile.Contains(".yml"))
 					pidfile = pidfile.Remove(pidfile.IndexOf(".yml")) + ".pid";
 				else
 					pidfile = pidfile + ".pid";

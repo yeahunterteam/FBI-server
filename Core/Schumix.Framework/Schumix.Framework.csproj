@@ -102,7 +102,6 @@
     <Compile Include="Config\LocalizationConfig.cs" />
     <Compile Include="Config\ServerConfig.cs" />
     <Compile Include="Config\IRCConfigBase.cs" />
-    <Compile Include="Config\XmlConfig.cs" />
     <Compile Include="Config\YamlConfig.cs" />
     <Compile Include="Config\CrashConfig.cs" />
     <Compile Include="Config\ShutdownConfig.cs" />
