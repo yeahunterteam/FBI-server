@@ -132,14 +132,13 @@ namespace Schumix.Framework.Client
 		{
 			string project = pck.Read<string>();
 			string refname = pck.Read<string>();
-			string rev = pck.Read<string>();
+			string rev = pck.Read<string>().ToLower();
 			string author = pck.Read<string>();
 			string url = pck.Read<string>();
-			string channels = pck.Read<string>();
-			string ircserver = pck.Read<string>();
+			string channels = pck.Read<string>().ToLower();
+			string ircserver = pck.Read<string>().ToLower();
 			string message = pck.Read<string>();
 
-			ircserver = ircserver.ToLower();
 			if(!sIrcBase.Networks.ContainsKey(ircserver))
 				return;
 
