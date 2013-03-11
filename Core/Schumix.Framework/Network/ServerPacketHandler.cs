@@ -148,7 +148,19 @@ namespace Schumix.Framework.Network
 
 			foreach(var chan in channels.Split(SchumixBase.Comma))
 			{
-				sSender.Join(chan);
+				if(chan.Contains(SchumixBase.Colon.ToString()))
+				{
+					string cname = chan.Substring(0, chan.IndexOf(SchumixBase.Colon));
+					string cpassword = chan.Substring(chan.IndexOf(SchumixBase.Colon)+1);
+
+					if(cpassword.Length > 0)
+						sSender.Join(cname, cpassword);
+					else
+						sSender.Join(cname);
+				}
+				else
+					sSender.Join(chan);
+
 				sSendMessage.SendCMPrivmsg(chan, "[3{0}] {1} pushed new commit to 7{2}: 02{3}", project, author, refname, url);
 				sSendMessage.SendCMPrivmsg(chan, "3{0}15/7{1} 10{2} {3}: {4}", project, refname, rev, author, message);
 				Thread.Sleep(1000);
