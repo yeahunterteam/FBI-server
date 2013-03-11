@@ -82,45 +82,21 @@ namespace Schumix.Irc
 		private string _servername;
 		private int _serverid;
 
-		public Network() : base("default")
+		public Network() : this("localhost")
 		{
-			_servername = "default";
-			_serverid = 1;
-			_server = "localhost";
-			_port = 6667;
-			Shutdown = false;
-
-			Log.Notice("Network", sLConsole.Network("Text"));
-			Log.Notice("Network", sLConsole.Network("Text20"), _servername);
-			CType = ConnectionType.Normal;
+			// None
 		}
-
-		public Network(string Server) : base("default")
+		
+		public Network(string Server) : this(Server, 6667)
 		{
-			_servername = "default";
-			_serverid = 1;
-			_server = Server;
-			_port = 6667;
-			Shutdown = false;
-
-			Log.Notice("Network", sLConsole.Network("Text"));
-			Log.Notice("Network", sLConsole.Network("Text20"), _servername);
-			CType = ConnectionType.Normal;
+			// None
 		}
-
-		public Network(string Server, int Port) : base("default")
+		
+		public Network(string Server, int Port) : this("default", 1, Server, Port)
 		{
-			_servername = "default";
-			_serverid = 1;
-			_server = Server;
-			_port = Port;
-			Shutdown = false;
-
-			Log.Notice("Network", sLConsole.Network("Text"));
-			Log.Notice("Network", sLConsole.Network("Text20"), _servername);
-			CType = ConnectionType.Normal;
+			// None
 		}
-
+		
 		public Network(string ServerName, int ServerId, string Server, int Port) : base(ServerName)
 		{
 			_servername = ServerName;
@@ -128,9 +104,9 @@ namespace Schumix.Irc
 			_server = Server;
 			_port = Port;
 			Shutdown = false;
-
+			
 			Log.Notice("Network", sLConsole.Network("Text"));
-			Log.Notice("Network", sLConsole.Network("Text20"), ServerName);
+			Log.Notice("Network", sLConsole.Network("Text20"), _servername);
 			CType = ConnectionType.Normal;
 		}
 
