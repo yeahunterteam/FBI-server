@@ -127,7 +127,7 @@ namespace Schumix.Framework.Client
 			//}
 
 			Thread.Sleep(1000);
-			Process.GetCurrentProcess().Kill();
+			Environment.Exit(0);
 		}
 	}
 }

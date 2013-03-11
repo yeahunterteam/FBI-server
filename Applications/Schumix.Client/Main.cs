@@ -48,7 +48,7 @@ namespace Schumix.Client
 		/// </summary>
 		private static void Main(string[] args)
 		{
-			sRuntime.SetProcessName("Cliens");
+			sRuntime.SetProcessName("Client");
 			System.Console.BackgroundColor = ConsoleColor.Black;
 			System.Console.ForegroundColor = ConsoleColor.Gray;
 			string host = "127.0.0.1";
@@ -208,7 +208,7 @@ namespace Schumix.Client
 		/// </summary>
 		private static void Help()
 		{
-			System.Console.WriteLine("[Cliens] Version: {0}", sUtilities.GetVersion());
+			System.Console.WriteLine("[Client] Version: {0}", sUtilities.GetVersion());
 			System.Console.WriteLine("Options:");
 			System.Console.WriteLine("\t-h, --help\t\t\tShow help");
 		}
