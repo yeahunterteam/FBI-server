@@ -10,7 +10,6 @@ ASSEMBLY = ../../Run/Debug/Schumix.exe
 ASSEMBLY_MDB = $(ASSEMBLY).mdb
 COMPILE_TARGET = exe
 PROJECT_REFERENCES =  \
-	../../Run/Debug/Schumix.Irc.dll \
 	../../Run/Debug/Schumix.Framework.dll \
 	../../Run/Debug/Schumix.API.dll
 BUILD_DIR = ../../Run/Debug
@@ -18,13 +17,18 @@ BUILD_DIR = ../../Run/Debug
 SCHUMIX_EXE_MDB_SOURCE=../../Run/Debug/Schumix.exe.mdb
 SCHUMIX_EXE_MDB=$(BUILD_DIR)/Schumix.exe.mdb
 MONO_POSIX_DLL_SOURCE=../../Dependencies/Mono.Posix.dll
-SCHUMIX_IRC_DLL_SOURCE=../../Run/Debug/Schumix.Irc.dll
 SCHUMIX_FRAMEWORK_DLL_SOURCE=../../Run/Debug/Schumix.Framework.dll
+SCHUMIX_FRAMEWORK_DLL_MDB_SOURCE=../../Run/Debug/Schumix.Framework.dll.mdb
+SCHUMIX_FRAMEWORK_DLL_MDB=$(BUILD_DIR)/Schumix.Framework.dll.mdb
+SQLITE3_DLL_SOURCE=../../Dependencies/sqlite3.dll
+SCHUMIX_DB3_SOURCE=../../Sql/Schumix.db3
 MYSQL_DATA_DLL_SOURCE=../../Dependencies/MySql.Data.dll
 SYSTEM_DATA_SQLITE_DLL_SOURCE=../../Dependencies/System.Data.SQLite.dll
 YAMLDOTNET_CORE_DLL_SOURCE=../../Dependencies/YamlDotNet.Core.dll
 YAMLDOTNET_REPRESENTATIONMODEL_DLL_SOURCE=../../Dependencies/YamlDotNet.RepresentationModel.dll
 SCHUMIX_API_DLL_SOURCE=../../Run/Debug/Schumix.API.dll
+SCHUMIX_API_DLL_MDB_SOURCE=../../Run/Debug/Schumix.API.dll.mdb
+SCHUMIX_API_DLL_MDB=$(BUILD_DIR)/Schumix.API.dll.mdb
 
 endif
 
@@ -35,20 +39,22 @@ ASSEMBLY = ../../Run/Release/Schumix.exe
 ASSEMBLY_MDB = 
 COMPILE_TARGET = exe
 PROJECT_REFERENCES =  \
-	../../Run/Release/Schumix.Irc.dll \
 	../../Run/Release/Schumix.Framework.dll \
 	../../Run/Release/Schumix.API.dll
 BUILD_DIR = ../../Run/Release
 
 SCHUMIX_EXE_MDB=
 MONO_POSIX_DLL_SOURCE=../../Dependencies/Mono.Posix.dll
-SCHUMIX_IRC_DLL_SOURCE=../../Run/Release/Schumix.Irc.dll
 SCHUMIX_FRAMEWORK_DLL_SOURCE=../../Run/Release/Schumix.Framework.dll
+SCHUMIX_FRAMEWORK_DLL_MDB=
+SQLITE3_DLL_SOURCE=../../Dependencies/sqlite3.dll
+SCHUMIX_DB3_SOURCE=../../Sql/Schumix.db3
 MYSQL_DATA_DLL_SOURCE=../../Dependencies/MySql.Data.dll
 SYSTEM_DATA_SQLITE_DLL_SOURCE=../../Dependencies/System.Data.SQLite.dll
 YAMLDOTNET_CORE_DLL_SOURCE=../../Dependencies/YamlDotNet.Core.dll
 YAMLDOTNET_REPRESENTATIONMODEL_DLL_SOURCE=../../Dependencies/YamlDotNet.RepresentationModel.dll
 SCHUMIX_API_DLL_SOURCE=../../Run/Release/Schumix.API.dll
+SCHUMIX_API_DLL_MDB=
 
 endif
 
@@ -59,7 +65,6 @@ ASSEMBLY = ../../Run/Debug_x64/Schumix.exe
 ASSEMBLY_MDB = $(ASSEMBLY).mdb
 COMPILE_TARGET = exe
 PROJECT_REFERENCES =  \
-	../../Run/Debug_x64/Schumix.Irc.dll \
 	../../Run/Debug_x64/Schumix.Framework.dll \
 	../../Run/Debug_x64/Schumix.API.dll
 BUILD_DIR = ../../Run/Debug_x64
@@ -67,13 +72,18 @@ BUILD_DIR = ../../Run/Debug_x64
 SCHUMIX_EXE_MDB_SOURCE=../../Run/Debug_x64/Schumix.exe.mdb
 SCHUMIX_EXE_MDB=$(BUILD_DIR)/Schumix.exe.mdb
 MONO_POSIX_DLL_SOURCE=../../Dependencies/Mono.Posix.dll
-SCHUMIX_IRC_DLL_SOURCE=../../Run/Debug_x64/Schumix.Irc.dll
 SCHUMIX_FRAMEWORK_DLL_SOURCE=../../Run/Debug_x64/Schumix.Framework.dll
+SCHUMIX_FRAMEWORK_DLL_MDB_SOURCE=../../Run/Debug_x64/Schumix.Framework.dll.mdb
+SCHUMIX_FRAMEWORK_DLL_MDB=$(BUILD_DIR)/Schumix.Framework.dll.mdb
+SQLITE3_DLL_SOURCE=../../Dependencies/sqlite3.dll
+SCHUMIX_DB3_SOURCE=../../Sql/Schumix.db3
 MYSQL_DATA_DLL_SOURCE=../../Dependencies/MySql.Data.dll
 SYSTEM_DATA_SQLITE_DLL_SOURCE=../../Dependencies/System.Data.SQLite.dll
 YAMLDOTNET_CORE_DLL_SOURCE=../../Dependencies/YamlDotNet.Core.dll
 YAMLDOTNET_REPRESENTATIONMODEL_DLL_SOURCE=../../Dependencies/YamlDotNet.RepresentationModel.dll
 SCHUMIX_API_DLL_SOURCE=../../Run/Debug_x64/Schumix.API.dll
+SCHUMIX_API_DLL_MDB_SOURCE=../../Run/Debug_x64/Schumix.API.dll.mdb
+SCHUMIX_API_DLL_MDB=$(BUILD_DIR)/Schumix.API.dll.mdb
 
 endif
 
@@ -84,20 +94,22 @@ ASSEMBLY = ../../Run/Release_x64/Schumix.exe
 ASSEMBLY_MDB = 
 COMPILE_TARGET = exe
 PROJECT_REFERENCES =  \
-	../../Run/Release_x64/Schumix.Irc.dll \
 	../../Run/Release_x64/Schumix.Framework.dll \
 	../../Run/Release_x64/Schumix.API.dll
 BUILD_DIR = ../../Run/Release_x64
 
 SCHUMIX_EXE_MDB=
 MONO_POSIX_DLL_SOURCE=../../Dependencies/Mono.Posix.dll
-SCHUMIX_IRC_DLL_SOURCE=../../Run/Release_x64/Schumix.Irc.dll
 SCHUMIX_FRAMEWORK_DLL_SOURCE=../../Run/Release_x64/Schumix.Framework.dll
+SCHUMIX_FRAMEWORK_DLL_MDB=
+SQLITE3_DLL_SOURCE=../../Dependencies/sqlite3.dll
+SCHUMIX_DB3_SOURCE=../../Sql/Schumix.db3
 MYSQL_DATA_DLL_SOURCE=../../Dependencies/MySql.Data.dll
 SYSTEM_DATA_SQLITE_DLL_SOURCE=../../Dependencies/System.Data.SQLite.dll
 YAMLDOTNET_CORE_DLL_SOURCE=../../Dependencies/YamlDotNet.Core.dll
 YAMLDOTNET_REPRESENTATIONMODEL_DLL_SOURCE=../../Dependencies/YamlDotNet.RepresentationModel.dll
 SCHUMIX_API_DLL_SOURCE=../../Run/Release_x64/Schumix.API.dll
+SCHUMIX_API_DLL_MDB=
 
 endif
 
@@ -107,13 +119,16 @@ SATELLITE_ASSEMBLY_NAME=$(notdir $(basename $(ASSEMBLY))).resources.dll
 PROGRAMFILES = \
 	$(SCHUMIX_EXE_MDB) \
 	$(MONO_POSIX_DLL) \
-	$(SCHUMIX_IRC_DLL) \
 	$(SCHUMIX_FRAMEWORK_DLL) \
+	$(SCHUMIX_FRAMEWORK_DLL_MDB) \
+	$(SQLITE3_DLL) \
+	$(SCHUMIX_DB3) \
 	$(MYSQL_DATA_DLL) \
 	$(SYSTEM_DATA_SQLITE_DLL) \
 	$(YAMLDOTNET_CORE_DLL) \
 	$(YAMLDOTNET_REPRESENTATIONMODEL_DLL) \
-	$(SCHUMIX_API_DLL)  
+	$(SCHUMIX_API_DLL) \
+	$(SCHUMIX_API_DLL_MDB)  
 
 BINARIES = \
 	$(SCHUMIX)  
@@ -160,8 +175,9 @@ CLEANFILES = $(PROGRAMFILES) $(BINARIES)
 include $(top_srcdir)/Makefile.include
 
 MONO_POSIX_DLL = $(BUILD_DIR)/Mono.Posix.dll
-SCHUMIX_IRC_DLL = $(BUILD_DIR)/Schumix.Irc.dll
 SCHUMIX_FRAMEWORK_DLL = $(BUILD_DIR)/Schumix.Framework.dll
+SQLITE3_DLL = $(BUILD_DIR)/sqlite3.dll
+SCHUMIX_DB3 = $(BUILD_DIR)/Schumix.db3
 MYSQL_DATA_DLL = $(BUILD_DIR)/MySql.Data.dll
 SYSTEM_DATA_SQLITE_DLL = $(BUILD_DIR)/System.Data.SQLite.dll
 YAMLDOTNET_CORE_DLL = $(BUILD_DIR)/YamlDotNet.Core.dll
@@ -170,6 +186,8 @@ SCHUMIX_API_DLL = $(BUILD_DIR)/Schumix.API.dll
 SCHUMIX = $(BUILD_DIR)/schumix
 
 $(eval $(call emit-deploy-target,MONO_POSIX_DLL))
+$(eval $(call emit-deploy-target,SQLITE3_DLL))
+$(eval $(call emit-deploy-target,SCHUMIX_DB3))
 $(eval $(call emit-deploy-target,MYSQL_DATA_DLL))
 $(eval $(call emit-deploy-target,SYSTEM_DATA_SQLITE_DLL))
 $(eval $(call emit-deploy-target,YAMLDOTNET_CORE_DLL))

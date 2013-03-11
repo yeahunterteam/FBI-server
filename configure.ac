@@ -1,7 +1,7 @@
 dnl Warning: This is an automatically generated file, do not edit!
 dnl Process this file with autoconf to produce a configure script.
 AC_PREREQ([2.54])
-AC_INIT([Schumix], [3.x])
+AC_INIT([Schumix], [4.x])
 AM_INIT_AUTOMAKE([foreign])
 AM_MAINTAINER_MODE
 
@@ -71,16 +71,12 @@ Core/Schumix.API/schumix.api.pc
 Core/Schumix.API/Makefile
 Core/Schumix.Framework/schumix.framework.pc
 Core/Schumix.Framework/Makefile
-Core/Schumix.Irc/schumix.irc.pc
-Core/Schumix.Irc/Makefile
 Core/Makefile
 Applications/Schumix/schumix
 Applications/Schumix/Makefile
-Applications/Schumix.Server/schumix.server
-Applications/Schumix.Server/Makefile
+Applications/Schumix.Client/schumix.client
+Applications/Schumix.Client/Makefile
 Applications/Makefile
-Addons/Schumix.TestAddon/schumix.testaddon.pc
-Addons/Schumix.TestAddon/Makefile
 Makefile
 
 ])

@@ -22,6 +22,8 @@ SYSTEM_DATA_SQLITE_DLL_SOURCE=../../Dependencies/System.Data.SQLite.dll
 YAMLDOTNET_CORE_DLL_SOURCE=../../Dependencies/YamlDotNet.Core.dll
 YAMLDOTNET_REPRESENTATIONMODEL_DLL_SOURCE=../../Dependencies/YamlDotNet.RepresentationModel.dll
 SCHUMIX_API_DLL_SOURCE=../../Run/Debug/Schumix.API.dll
+SCHUMIX_API_DLL_MDB_SOURCE=../../Run/Debug/Schumix.API.dll.mdb
+SCHUMIX_API_DLL_MDB=$(BUILD_DIR)/Schumix.API.dll.mdb
 
 endif
 
@@ -43,6 +45,7 @@ SYSTEM_DATA_SQLITE_DLL_SOURCE=../../Dependencies/System.Data.SQLite.dll
 YAMLDOTNET_CORE_DLL_SOURCE=../../Dependencies/YamlDotNet.Core.dll
 YAMLDOTNET_REPRESENTATIONMODEL_DLL_SOURCE=../../Dependencies/YamlDotNet.RepresentationModel.dll
 SCHUMIX_API_DLL_SOURCE=../../Run/Release/Schumix.API.dll
+SCHUMIX_API_DLL_MDB=
 
 endif
 
@@ -65,6 +68,8 @@ SYSTEM_DATA_SQLITE_DLL_SOURCE=../../Dependencies/System.Data.SQLite.dll
 YAMLDOTNET_CORE_DLL_SOURCE=../../Dependencies/YamlDotNet.Core.dll
 YAMLDOTNET_REPRESENTATIONMODEL_DLL_SOURCE=../../Dependencies/YamlDotNet.RepresentationModel.dll
 SCHUMIX_API_DLL_SOURCE=../../Run/Debug_x64/Schumix.API.dll
+SCHUMIX_API_DLL_MDB_SOURCE=../../Run/Debug_x64/Schumix.API.dll.mdb
+SCHUMIX_API_DLL_MDB=$(BUILD_DIR)/Schumix.API.dll.mdb
 
 endif
 
@@ -86,6 +91,7 @@ SYSTEM_DATA_SQLITE_DLL_SOURCE=../../Dependencies/System.Data.SQLite.dll
 YAMLDOTNET_CORE_DLL_SOURCE=../../Dependencies/YamlDotNet.Core.dll
 YAMLDOTNET_REPRESENTATIONMODEL_DLL_SOURCE=../../Dependencies/YamlDotNet.RepresentationModel.dll
 SCHUMIX_API_DLL_SOURCE=../../Run/Release_x64/Schumix.API.dll
+SCHUMIX_API_DLL_MDB=
 
 endif
 
@@ -100,7 +106,8 @@ PROGRAMFILES = \
 	$(SYSTEM_DATA_SQLITE_DLL) \
 	$(YAMLDOTNET_CORE_DLL) \
 	$(YAMLDOTNET_REPRESENTATIONMODEL_DLL) \
-	$(SCHUMIX_API_DLL)  
+	$(SCHUMIX_API_DLL) \
+	$(SCHUMIX_API_DLL_MDB)  
 
 LINUX_PKGCONFIG = \
 	$(SCHUMIX_FRAMEWORK_PC)  
@@ -121,24 +128,16 @@ FILES = \
 	Database/SQLite.cs \
 	Database/DatabaseManager.cs \
 	Database/MySql.cs \
-	Exceptions/SchumixException.cs \
 	Utilities.cs \
 	Timer.cs \
 	Localization/LocalizationManager.cs \
 	Localization/LocalizationConsole.cs \
 	Extensions/GeneralExtensions.cs \
-	Extensions/CollectionExtensions.cs \
-	Extensions/ReflectionExtensions.cs \
-	Network/ClientPacketHandler.cs \
 	Network/Opcodes.cs \
 	Network/SchumixPacket.cs \
-	Network/ClientSocket.cs \
 	Runtime.cs \
 	CrashDumper.cs \
 	PlatformType.cs \
-	Mathematics/Algorithms/QuickSort.cs \
-	Mathematics/Types/AutoSortedArray.cs \
-	Mathematics/MathFunctions.cs \
 	Log.cs \
 	Config/Consts.cs \
 	Config/SchumixConfig.cs \
@@ -146,34 +145,37 @@ FILES = \
 	Config/MySqlConfig.cs \
 	Config/SQLiteConfig.cs \
 	Config/LogConfig.cs \
-	Config/AddonsConfig.cs \
-	Config/ScriptsConfig.cs \
 	Config/LocalizationConfig.cs \
-	Config/UpdateConfig.cs \
 	Config/ServerConfig.cs \
 	Config/IRCConfigBase.cs \
-	Addon/AddonManager.cs \
-	Addon/AddonBase.cs \
 	Config/XmlConfig.cs \
 	Config/YamlConfig.cs \
-	Network/ClientPacketHandlerDelegate.cs \
 	Config/CrashConfig.cs \
-	JsonHelper.cs \
 	Config/ShutdownConfig.cs \
-	Config/FloodingConfig.cs \
 	Database/Cache/CacheDB.cs \
-	Database/Cache/LocalizedCommand.cs \
 	Database/Cache/LocalizedConsoleCommand.cs \
 	Database/Cache/LocalizedConsoleCommandHelp.cs \
 	Database/Cache/LocalizedConsoleWarning.cs \
 	Database/Cache/Channels.cs \
-	Database/Cache/LocalizedCommandHelp.cs \
-	Database/Cache/LocalizedWarning.cs \
 	Clean/CleanManager.cs \
 	Clean/CleanConfig.cs \
 	Clean/CleanDatabase.cs \
+	LogType.cs \
+	Sender/Sender.cs \
+	Sender/SendMessage.cs \
+	ChannelInfo.cs \
+	ConnectionType.cs \
+	IrcBase.cs \
+	MessageHandler.cs \
+	Network.cs \
+	NickInfo.cs \
+	PublicMessageHandler.cs \
+	ReplyCode.cs \
 	Config/CleanConfig.cs \
-	LogType.cs 
+	Network/ServerListener.cs \
+	Network/ServerPacketHandler.cs \
+	Network/ServerPacketHandlerDelegate.cs \
+	IrcMethod.cs 
 
 DATA_FILES = 
 
