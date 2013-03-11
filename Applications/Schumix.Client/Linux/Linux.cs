@@ -22,7 +22,6 @@ using System.Threading;
 using Mono.Unix;
 using Mono.Unix.Native;
 using Schumix.Framework;
-using Schumix.Framework.Client;
 
 namespace Schumix.Client
 {

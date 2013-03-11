@@ -26,10 +26,9 @@ using System.Collections.Generic;
 using Schumix.Irc;
 using Schumix.Framework;
 using Schumix.Framework.Config;
-using Schumix.Framework.Client;
 using Schumix.Framework.Localization;
 
-namespace Schumix.Framework.Client
+namespace Schumix.Framework.Network
 {
 	class ServerPacketHandler
 	{
@@ -80,7 +79,7 @@ namespace Schumix.Framework.Client
 				OnAuthRequest(packet, stream, hst, bck);
 			else if(packetid == (int)Opcode.CMSG_CLOSE_CONNECTION)
 				OnCloseConnection(packet, stream, hst, bck);
-			else if(packetid == (int)Opcode.CMSG_REQUEST_TEST)
+			else if(packetid == (int)Opcode.CMSG_REQUEST_COMMIT)
 				OnTest(packet, stream, hst, bck);
 		}
 

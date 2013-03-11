@@ -27,8 +27,8 @@ using System.Diagnostics;
 using System.Globalization;
 using Schumix.Framework;
 using Schumix.Framework.Clean;
-using Schumix.Framework.Client;
 using Schumix.Framework.Config;
+using Schumix.Framework.Network;
 using Schumix.Framework.Extensions;
 using Schumix.Framework.Localization;
 
@@ -54,6 +54,8 @@ namespace Schumix.Client
 			string host = "127.0.0.1";
 			int port = 35220;
 			string password = "schumix";
+
+			// Adatok melyek a kommitok kiírásához kellenek.
 			string message = string.Empty;
 			string project = string.Empty;
 			string refname = string.Empty;
@@ -180,8 +182,9 @@ namespace Schumix.Client
 			listener.Socket();
 			Thread.Sleep(500);
 
+			// Commit
 			var packet = new SchumixPacket();
-			packet.Write<int>((int)Opcode.CMSG_REQUEST_TEST);
+			packet.Write<int>((int)Opcode.CMSG_REQUEST_COMMIT);
 			packet.Write<string>(project);
 			packet.Write<string>(refname);
 			packet.Write<string>(rev);
@@ -197,6 +200,7 @@ namespace Schumix.Client
 			packet2.Write<int>((int)Opcode.CMSG_CLOSE_CONNECTION);
 			packet2.Write<string>(SchumixBase.GetGuid().ToString());
 			ClientSocket.SendPacketToSCS(packet2);
+
 			Thread.Sleep(1000);
 			listener.Close();
 			listener.Dispose();
@@ -215,6 +219,11 @@ namespace Schumix.Client
  
 		public static void Shutdown(Exception eventArgs = null)
 		{
+			/*var packet = new SchumixPacket();
+			packet.Write<int>((int)Opcode.SMSG_CLOSE_CONNECTION);
+			packet.Write<int>((int)0);
+			ClientSocket.SendPacketToSCS(packet);*/
+
 			if(!eventArgs.IsNull())
 			{
 				//Log.Error("Main", sLConsole.MainText("StartText4"), eventArgs);

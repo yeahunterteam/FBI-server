@@ -24,11 +24,13 @@ using System.Diagnostics;
 using System.Net.Sockets;
 using Schumix.API;
 using Schumix.API.Irc;
+using Schumix.Framework;
 using Schumix.Framework.Config;
+using Schumix.Framework.Network;
 using Schumix.Framework.Extensions;
 using Schumix.Framework.Localization;
 
-namespace Schumix.Framework.Client
+namespace Schumix.Client
 {
 	/// <summary>
 	/// Packet handler used by the client.

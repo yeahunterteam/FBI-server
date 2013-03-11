@@ -24,11 +24,10 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using Schumix.Framework;
-using Schumix.Framework.Client;
 using Schumix.Framework.Extensions;
 using Schumix.Framework.Localization;
 
-namespace Schumix.Framework.Client
+namespace Schumix.Framework.Network
 {
 	public sealed class ServerListener : IDisposable
 	{

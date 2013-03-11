@@ -21,7 +21,7 @@ using System;
 using System.Threading;
 using System.Runtime.InteropServices;
 using Schumix.Framework;
-using Schumix.Framework.Client;
+using Schumix.Framework.Network;
 
 namespace Schumix.Client
 {
@@ -41,10 +41,6 @@ namespace Schumix.Client
 	
 		private bool Handler(CtrlType sig)
 		{
-			var packet = new SchumixPacket();
-			packet.Write<int>((int)Opcode.SMSG_CLOSE_CONNECTION);
-			packet.Write<int>((int)0);
-
 			switch(sig)
 			{
 				case CtrlType.CTRL_C_EVENT:

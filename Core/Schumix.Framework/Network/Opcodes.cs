@@ -22,7 +22,7 @@ using System;
 
 #pragma warning disable 1591
 
-namespace Schumix.Framework.Client
+namespace Schumix.Framework.Network
 {
 	/// <summary>
 	/// List of possible Opcodes.
@@ -37,7 +37,7 @@ namespace Schumix.Framework.Client
 		SMSG_CONFIG_RESPONSE    = 0x05,
 		CMSG_CLOSE_CONNECTION   = 0x06,
 		SMSG_CLOSE_CONNECTION   = 0x07,
-		CMSG_REQUEST_TEST       = 0x08,
+		CMSG_REQUEST_COMMIT     = 0x08,
 	}
 }
 

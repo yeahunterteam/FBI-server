@@ -24,11 +24,13 @@ using System.Text;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using Schumix.Framework;
 using Schumix.Framework.Config;
+using Schumix.Framework.Network;
 using Schumix.Framework.Extensions;
 using Schumix.Framework.Localization;
 
-namespace Schumix.Framework.Client
+namespace Schumix.Client
 {
 	/// <summary>
 	/// Listener used inside the Alaris bot to get and handle ACS responses.
