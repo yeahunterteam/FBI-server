@@ -24,7 +24,7 @@ namespace Schumix.Framework.Config
 	public static class Consts
 	{
 		private static readonly Utilities sUtilities = Singleton<Utilities>.Instance;
-		public const string SchumixDescription = "Schumix IRC bot";
+		public const string SchumixDescription = "FBI IRC bot";
 #if DEBUG
 		public const string SchumixConfiguration = "Debug";
 #else
@@ -34,8 +34,8 @@ namespace Schumix.Framework.Config
 		public const string SchumixProduct = "Schumix";
 		public const string SchumixCopyright = "Copyright (C) 2010-2012 Megax <http://megax.yeahunter.hu/>";
 		public const string SchumixTrademark = "GNU General Public License";
-		public const string SchumixVersion = "4.0.0";
-		public const string SchumixFileVersion = "4.0.0.0";
+		public const string SchumixVersion = "4.0.1";
+		public const string SchumixFileVersion = "4.0.1.0";
 		public const string SchumixProgrammedBy = "Csaba Jakosa (Megax)";
 		public const string SchumixDevelopers = "Csaba Jakosa (Megax), Twl, Jackneill, Invisible";
 		public const string SchumixWebsite = "https://github.com/Schumix/Schumix2";

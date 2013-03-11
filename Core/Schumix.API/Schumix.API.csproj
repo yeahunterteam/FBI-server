@@ -50,9 +50,7 @@
     <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ISchumix.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Delegate\CommandDelegate.cs" />
     <Compile Include="Delegate\IRCDelegate.cs" />
     <Compile Include="Functions\IChannelFunctions.cs" />
     <Compile Include="Functions\IFunctions.cs" />
