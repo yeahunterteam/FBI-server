@@ -40,14 +40,14 @@ namespace Schumix.Framework.Network
 		private readonly IrcBase sIrcBase = Singleton<IrcBase>.Instance;
 		public event ServerPacketHandlerDelegate OnCloseConnection;
 		public event ServerPacketHandlerDelegate OnAuthRequest;
-		public event ServerPacketHandlerDelegate OnTest;
+		public event ServerPacketHandlerDelegate OnCommit;
 		private ServerPacketHandler() {}
 
 		public void Init()
 		{
 			OnAuthRequest      += AuthRequestPacketHandler;
 			OnCloseConnection  += CloseHandler;
-			OnTest             += TestHandler;
+			OnCommit           += CommitHandler;
 		}
 
 		public void HandlePacket(SchumixPacket packet, TcpClient client, NetworkStream stream)
@@ -80,7 +80,7 @@ namespace Schumix.Framework.Network
 			else if(packetid == (int)Opcode.CMSG_CLOSE_CONNECTION)
 				OnCloseConnection(packet, stream, hst, bck);
 			else if(packetid == (int)Opcode.CMSG_REQUEST_COMMIT)
-				OnTest(packet, stream, hst, bck);
+				OnCommit(packet, stream, hst, bck);
 		}
 
 		private void AuthRequestPacketHandler(SchumixPacket pck, NetworkStream stream, string hst, int bck)
@@ -127,7 +127,7 @@ namespace Schumix.Framework.Network
 			//Log.Notice("CloseHandler", sLConsole.ServerPacketHandler("Text7"));
 		}
 
-		private void TestHandler(SchumixPacket pck, NetworkStream stream, string hst, int bck)
+		private void CommitHandler(SchumixPacket pck, NetworkStream stream, string hst, int bck)
 		{
 			string project = pck.Read<string>();
 			string refname = pck.Read<string>();
