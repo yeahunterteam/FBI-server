@@ -32,7 +32,7 @@ using Schumix.Framework.Config;
 using Schumix.Framework.Extensions;
 using Schumix.Framework.Localization;
 
-namespace Schumix.Server
+namespace Schumix.Client
 {
 	class MainClass
 	{

@@ -137,7 +137,7 @@ namespace Schumix.Irc
 		public void Initialize()
 		{
 			InitHandler();
-			InitializeCommandHandler();
+			InitializeMessageHandler();
 			Task.Factory.StartNew(() => sChannelInfo.ChannelList());
 		}
 

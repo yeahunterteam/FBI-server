@@ -50,7 +50,7 @@ namespace Schumix.Irc
 			_servername = ServerName;
 		}
 
-		public void InitializeCommandHandler()
+		public void InitializeMessageHandler()
 		{
 			sSendMessage = new SendMessage(_servername);
 			sSender = new Sender(_servername);

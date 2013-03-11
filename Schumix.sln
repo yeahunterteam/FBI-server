@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applications", "Application
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schumix", "Applications\Schumix\Schumix.csproj", "{CBAB674C-120D-4E4E-90CB-FCCC61B845B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schumix.Cliens", "Applications\Schumix.Server\Schumix.Cliens.csproj", "{B57F5CBD-3E27-4213-8202-103B75765BDC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schumix.Client", "Applications\Schumix.Server\Schumix.Client.csproj", "{B57F5CBD-3E27-4213-8202-103B75765BDC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

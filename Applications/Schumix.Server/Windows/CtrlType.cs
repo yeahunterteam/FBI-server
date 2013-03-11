@@ -19,7 +19,7 @@
 
 using System;
 
-namespace Schumix.Server
+namespace Schumix.Client
 {
 	enum CtrlType
 	{

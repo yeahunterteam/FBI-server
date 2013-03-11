@@ -24,7 +24,7 @@ using Mono.Unix.Native;
 using Schumix.Framework;
 using Schumix.Framework.Client;
 
-namespace Schumix.Server
+namespace Schumix.Client
 {
 	class Linux
 	{

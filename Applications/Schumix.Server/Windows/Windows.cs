@@ -23,7 +23,7 @@ using System.Runtime.InteropServices;
 using Schumix.Framework;
 using Schumix.Framework.Client;
 
-namespace Schumix.Server
+namespace Schumix.Client
 {
 	class Windows
 	{
