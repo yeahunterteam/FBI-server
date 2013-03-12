@@ -44,6 +44,24 @@ namespace Schumix.Client
 			ClientSocket.SendPacketToSCS(packet);
 		}
 
+		public void AddChannel(string channels, string ircserver)
+		{
+			var packet = new SchumixPacket();
+			packet.Write<int>((int)Opcode.CMSG_REQUEST_CHANNEL_ADD);
+			packet.Write<string>(channels);
+			packet.Write<string>(ircserver);
+			ClientSocket.SendPacketToSCS(packet);
+		}
+
+		public void RemoveChannel(string channels, string ircserver)
+		{
+			var packet = new SchumixPacket();
+			packet.Write<int>((int)Opcode.CMSG_REQUEST_CHANNEL_REMOVE);
+			packet.Write<string>(channels);
+			packet.Write<string>(ircserver);
+			ClientSocket.SendPacketToSCS(packet);
+		}
+
 		public void Close()
 		{
 			var packet = new SchumixPacket();

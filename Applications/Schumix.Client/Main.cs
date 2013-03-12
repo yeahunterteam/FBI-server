@@ -200,8 +200,10 @@ namespace Schumix.Client
 					sPackets.Commit(project, refname, rev, author, url, channels, ircserver, message);
 					break;
 				case "0x09":
+					sPackets.AddChannel(channels, ircserver);
 					break;
 				case "0x10":
+					sPackets.RemoveChannel(channels, ircserver);
 					break;
 				case "0x11":
 					break;
