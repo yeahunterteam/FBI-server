@@ -42,6 +42,7 @@ namespace Schumix.Framework.Network
 		public event ServerPacketHandlerDelegate OnCloseConnection;
 		public event ServerPacketHandlerDelegate OnAuthRequest;
 		public event ServerPacketHandlerDelegate OnCommit;
+		public event ServerPacketHandlerDelegate OnAddChannel;
 		private ServerPacketHandler() {}
 
 		public void Init()
@@ -49,6 +50,7 @@ namespace Schumix.Framework.Network
 			OnAuthRequest      += AuthRequestPacketHandler;
 			OnCloseConnection  += CloseHandler;
 			OnCommit           += CommitHandler;
+			OnAddChannel       += AddChannelHandler;
 		}
 
 		public void HandlePacket(SchumixPacket packet, TcpClient client, NetworkStream stream)
@@ -82,6 +84,8 @@ namespace Schumix.Framework.Network
 				OnCloseConnection(packet, stream, hst, bck);
 			else if(packetid == (int)Opcode.CMSG_REQUEST_COMMIT)
 				OnCommit(packet, stream, hst, bck);
+			else if(packetid == (int)Opcode.CMSG_REQUEST_CHANNEL_ADD)
+				OnAddChannel(packet, stream, hst, bck);
 		}
 
 		private void AuthRequestPacketHandler(SchumixPacket pck, NetworkStream stream, string hst, int bck)
@@ -189,6 +193,59 @@ namespace Schumix.Framework.Network
 
 				sSendMessage.SendCMPrivmsg(chan, "[3{0}] {1} pushed new commit to 7{2}: 02{3}", project, author, refname, url);
 				sSendMessage.SendCMPrivmsg(chan, "3{0}15/7{1} 10{2} {3}: {4}", project, refname, rev, author, message);
+				Thread.Sleep(1000);
+			}
+		}
+
+		private void AddChannelHandler(SchumixPacket pck, NetworkStream stream, string hst, int bck)
+		{
+			string channels = pck.Read<string>().ToLower();
+			string ircserver = pck.Read<string>().ToLower();
+			
+			if(!sIrcBase.Networks.ContainsKey(ircserver))
+				return;
+			
+			var sSender = sIrcBase.Networks[ircserver].sSender;
+			var sChannelInfo = sIrcBase.Networks[ircserver].sChannelInfo;
+			
+			foreach(var chan in channels.Split(SchumixBase.Comma))
+			{
+				if(chan.Contains(SchumixBase.Colon.ToString()))
+				{
+					string cname = chan.Substring(0, chan.IndexOf(SchumixBase.Colon));
+					string cpassword = chan.Substring(chan.IndexOf(SchumixBase.Colon)+1);
+					
+					if(cpassword.Length > 0)
+					{
+						if(!sChannelInfo.CList.ContainsKey(cname))
+						{
+							sSender.Join(cname, cpassword);
+							SchumixBase.DManager.Insert("`channels`(ServerId, ServerName, Channel, Password, Language)", IRCConfig.List[ircserver].ServerId, ircserver, cname, cpassword, sLManager.Locale);
+							SchumixBase.DManager.Update("channels", "Enabled = 'true'", string.Format("Channel = '{0}' And ServerName = '{1}'", cname, ircserver));
+						}
+					}
+					else
+					{
+						if(!sChannelInfo.CList.ContainsKey(cname))
+						{
+							sSender.Join(cname);
+							SchumixBase.DManager.Insert("`channels`(ServerId, ServerName, Channel, Password, Language)", IRCConfig.List[ircserver].ServerId, ircserver, cname, string.Empty, sLManager.Locale);
+							SchumixBase.DManager.Update("channels", "Enabled = 'true'", string.Format("Channel = '{0}' And ServerName = '{1}'", cname, ircserver));
+						}
+					}
+				}
+				else
+				{
+					if(!sChannelInfo.CList.ContainsKey(chan))
+					{
+						sSender.Join(chan);
+						SchumixBase.DManager.Insert("`channels`(ServerId, ServerName, Channel, Password, Language)", IRCConfig.List[ircserver].ServerId, ircserver, chan, string.Empty, sLManager.Locale);
+						SchumixBase.DManager.Update("channels", "Enabled = 'true'", string.Format("Channel = '{0}' And ServerName = '{1}'", chan, ircserver));
+					}
+				}
+				
+				sChannelInfo.ChannelListReload();
+				sChannelInfo.ChannelFunctionsReload();
 				Thread.Sleep(1000);
 			}
 		}
