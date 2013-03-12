@@ -43,6 +43,7 @@ namespace Schumix.Framework.Network
 		public event ServerPacketHandlerDelegate OnAuthRequest;
 		public event ServerPacketHandlerDelegate OnCommit;
 		public event ServerPacketHandlerDelegate OnAddChannel;
+		public event ServerPacketHandlerDelegate OnRemoveChannel;
 		private ServerPacketHandler() {}
 
 		public void Init()
@@ -51,6 +52,7 @@ namespace Schumix.Framework.Network
 			OnCloseConnection  += CloseHandler;
 			OnCommit           += CommitHandler;
 			OnAddChannel       += AddChannelHandler;
+			OnRemoveChannel    += RemoveChannelHandler;
 		}
 
 		public void HandlePacket(SchumixPacket packet, TcpClient client, NetworkStream stream)
@@ -86,6 +88,8 @@ namespace Schumix.Framework.Network
 				OnCommit(packet, stream, hst, bck);
 			else if(packetid == (int)Opcode.CMSG_REQUEST_CHANNEL_ADD)
 				OnAddChannel(packet, stream, hst, bck);
+			else if(packetid == (int)Opcode.CMSG_REQUEST_CHANNEL_REMOVE)
+				OnRemoveChannel(packet, stream, hst, bck);
 		}
 
 		private void AuthRequestPacketHandler(SchumixPacket pck, NetworkStream stream, string hst, int bck)
@@ -241,6 +245,56 @@ namespace Schumix.Framework.Network
 						sSender.Join(chan);
 						SchumixBase.DManager.Insert("`channels`(ServerId, ServerName, Channel, Password, Language)", IRCConfig.List[ircserver].ServerId, ircserver, chan, string.Empty, sLManager.Locale);
 						SchumixBase.DManager.Update("channels", "Enabled = 'true'", string.Format("Channel = '{0}' And ServerName = '{1}'", chan, ircserver));
+					}
+				}
+				
+				sChannelInfo.ChannelListReload();
+				sChannelInfo.ChannelFunctionsReload();
+				Thread.Sleep(1000);
+			}
+		}
+
+		private void RemoveChannelHandler(SchumixPacket pck, NetworkStream stream, string hst, int bck)
+		{
+			string channels = pck.Read<string>().ToLower();
+			string ircserver = pck.Read<string>().ToLower();
+			
+			if(!sIrcBase.Networks.ContainsKey(ircserver))
+				return;
+			
+			var sSender = sIrcBase.Networks[ircserver].sSender;
+			var sChannelInfo = sIrcBase.Networks[ircserver].sChannelInfo;
+			
+			foreach(var chan in channels.Split(SchumixBase.Comma))
+			{
+				if(chan.Contains(SchumixBase.Colon.ToString()))
+				{
+					string cname = chan.Substring(0, chan.IndexOf(SchumixBase.Colon));
+
+					if(cname == IRCConfig.List[ircserver].MasterChannel.ToLower())
+					{
+						Log.Warning("PacketHandler", "Mester csatornát akarták kitörölni. A törlés megszakítva.");
+						continue;
+					}
+
+					if(!sChannelInfo.CList.ContainsKey(cname))
+					{
+						sSender.Part(cname);
+						SchumixBase.DManager.Delete("channels", string.Format("Channel = '{0}' And ServerName = '{1}'", cname, ircserver));
+					}
+				}
+				else
+				{
+					if(chan == IRCConfig.List[ircserver].MasterChannel.ToLower())
+					{
+						Log.Warning("PacketHandler", "Mester csatornát akarták kitörölni. A törlés megszakítva.");
+						continue;
+					}
+
+					if(!sChannelInfo.CList.ContainsKey(chan))
+					{
+						sSender.Part(chan);
+						SchumixBase.DManager.Delete("channels", string.Format("Channel = '{0}' And ServerName = '{1}'", chan, ircserver));
 					}
 				}
 				
