@@ -68,6 +68,7 @@
     <Compile Include="ClientPacketHandler.cs" />
     <Compile Include="ClientPacketHandlerDelegate.cs" />
     <Compile Include="ClientSocket.cs" />
+    <Compile Include="Packets.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

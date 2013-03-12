@@ -34,6 +34,7 @@ namespace Schumix.Framework.Network
 	{
 		private readonly Dictionary<string, NetworkStream> _HostList = new Dictionary<string, NetworkStream>();
 		private readonly LocalizationConsole sLConsole = Singleton<LocalizationConsole>.Instance;
+		private readonly LocalizationManager sLManager = Singleton<LocalizationManager>.Instance;
 		private readonly Dictionary<string, bool> _AuthList = new Dictionary<string, bool>();
 		private readonly Utilities sUtilities = Singleton<Utilities>.Instance;
 		public Dictionary<string, NetworkStream> HostList { get { return _HostList; } }
@@ -142,6 +143,7 @@ namespace Schumix.Framework.Network
 				return;
 
 			var sSender = sIrcBase.Networks[ircserver].sSender;
+			var sChannelInfo = sIrcBase.Networks[ircserver].sChannelInfo;
 			var sSendMessage = sIrcBase.Networks[ircserver].sSendMessage;
 			project = project.Replace(".git", string.Empty);
 			message = message.Length > 400 ? message.Substring(0, 400) + "..." : message;
@@ -154,12 +156,36 @@ namespace Schumix.Framework.Network
 					string cpassword = chan.Substring(chan.IndexOf(SchumixBase.Colon)+1);
 
 					if(cpassword.Length > 0)
-						sSender.Join(cname, cpassword);
+					{
+						if(!sChannelInfo.CList.ContainsKey(cname))
+						{
+							sSender.Join(cname, cpassword);
+							SchumixBase.DManager.Insert("`channels`(ServerId, ServerName, Channel, Password, Language)", IRCConfig.List[ircserver].ServerId, ircserver, cname, cpassword, sLManager.Locale);
+							SchumixBase.DManager.Update("channels", "Enabled = 'true'", string.Format("Channel = '{0}' And ServerName = '{1}'", cname, ircserver));
+						}
+					}
 					else
-						sSender.Join(cname);
+					{
+						if(!sChannelInfo.CList.ContainsKey(cname))
+						{
+							sSender.Join(cname);
+							SchumixBase.DManager.Insert("`channels`(ServerId, ServerName, Channel, Password, Language)", IRCConfig.List[ircserver].ServerId, ircserver, cname, string.Empty, sLManager.Locale);
+							SchumixBase.DManager.Update("channels", "Enabled = 'true'", string.Format("Channel = '{0}' And ServerName = '{1}'", cname, ircserver));
+						}
+					}
 				}
 				else
-					sSender.Join(chan);
+				{
+					if(!sChannelInfo.CList.ContainsKey(chan))
+					{
+						sSender.Join(chan);
+						SchumixBase.DManager.Insert("`channels`(ServerId, ServerName, Channel, Password, Language)", IRCConfig.List[ircserver].ServerId, ircserver, chan, string.Empty, sLManager.Locale);
+						SchumixBase.DManager.Update("channels", "Enabled = 'true'", string.Format("Channel = '{0}' And ServerName = '{1}'", chan, ircserver));
+					}
+				}
+
+				sChannelInfo.ChannelListReload();
+				sChannelInfo.ChannelFunctionsReload();
 
 				sSendMessage.SendCMPrivmsg(chan, "[3{0}] {1} pushed new commit to 7{2}: 02{3}", project, author, refname, url);
 				sSendMessage.SendCMPrivmsg(chan, "3{0}15/7{1} 10{2} {3}: {4}", project, refname, rev, author, message);

@@ -29,15 +29,19 @@ namespace Schumix.Framework.Network
 	/// </summary>
 	public enum Opcode : int
 	{
-		SCMSG_PACKET_NULL       = 0x0,
-		CMSG_REQUEST_AUTH       = 0x01,
-		SMSG_AUTH_APPROVED      = 0x02,
-		SMSG_AUTH_DENIED        = 0x03,
-		CMSG_REQUEST_CONFIG     = 0x04,
-		SMSG_CONFIG_RESPONSE    = 0x05,
-		CMSG_CLOSE_CONNECTION   = 0x06,
-		SMSG_CLOSE_CONNECTION   = 0x07,
-		CMSG_REQUEST_COMMIT     = 0x08,
+		SCMSG_PACKET_NULL             = 0x0,
+		CMSG_REQUEST_AUTH             = 0x01,
+		SMSG_AUTH_APPROVED            = 0x02,
+		SMSG_AUTH_DENIED              = 0x03,
+		CMSG_REQUEST_CONFIG           = 0x04,
+		SMSG_CONFIG_RESPONSE          = 0x05,
+		CMSG_CLOSE_CONNECTION         = 0x06,
+		SMSG_CLOSE_CONNECTION         = 0x07,
+		CMSG_REQUEST_COMMIT           = 0x08,
+		CMSG_REQUEST_CHANNEL_ADD      = 0x09,
+		CMSG_REQUEST_CHANNEL_REMOVE   = 0x10,
+		CMSG_REQUEST_IRCSERVER_ADD    = 0x11,
+		CMSG_REQUEST_IRCSERVER_REMOVE = 0x12
 	}
 }
 

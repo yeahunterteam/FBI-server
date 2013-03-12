@@ -42,6 +42,8 @@ namespace Schumix.Client
 		private static readonly Runtime sRuntime = Singleton<Runtime>.Instance;
 		private static readonly Windows sWindows = Singleton<Windows>.Instance;
 		private static readonly Linux sLinux = Singleton<Linux>.Instance;
+		private static readonly Packets sPackets = new Packets();
+		private static ClientSocket sClientSocket;
 
 		/// <summary>
 		///     A Main függvény. Itt indul el a program.
@@ -54,6 +56,7 @@ namespace Schumix.Client
 			string host = "127.0.0.1";
 			int port = 35220;
 			string password = "schumix";
+			string opcode = string.Empty;
 
 			// Adatok melyek a kommitok kiírásához kellenek.
 			string message = string.Empty;
@@ -144,6 +147,13 @@ namespace Schumix.Client
 					
 					continue;
 				}
+				else if(arg.Contains("--opcode="))
+				{
+					if(arg.Substring(arg.IndexOf("=")+1) != string.Empty)
+						opcode = arg.Substring(arg.IndexOf("=")+1);
+					
+					continue;
+				}
 				else if(arg.Contains("--message="))
 				{
 					string mess = args.SplitToString(SchumixBase.Space);
@@ -178,33 +188,34 @@ namespace Schumix.Client
 				Shutdown(eventArgs.ExceptionObject as Exception);
 			};
 
-			var listener = new ClientSocket(host, port, password);
-			listener.Socket();
+			sClientSocket = new ClientSocket(host, port, password);
+			sClientSocket.Socket();
 			Thread.Sleep(500);
 
-			// Commit
-			var packet = new SchumixPacket();
-			packet.Write<int>((int)Opcode.CMSG_REQUEST_COMMIT);
-			packet.Write<string>(project);
-			packet.Write<string>(refname);
-			packet.Write<string>(rev);
-			packet.Write<string>(author);
-			packet.Write<string>(url);
-			packet.Write<string>(channels);
-			packet.Write<string>(ircserver);
-			packet.Write<string>(message);
-			ClientSocket.SendPacketToSCS(packet);
-			
-			// Close
-			var packet2 = new SchumixPacket();
-			packet2.Write<int>((int)Opcode.CMSG_CLOSE_CONNECTION);
-			packet2.Write<string>(SchumixBase.GetGuid().ToString());
-			ClientSocket.SendPacketToSCS(packet2);
+			if(opcode != string.Empty)
+			{
+				switch(opcode)
+				{
+				case "0x08":
+					sPackets.Commit(project, refname, rev, author, url, channels, ircserver, message);
+					break;
+				case "0x09":
+					break;
+				case "0x10":
+					break;
+				case "0x11":
+					break;
+				case "0x12":
+					break;
+				}
+			}
+			else
+			{
+				// Commit
+				sPackets.Commit(project, refname, rev, author, url, channels, ircserver, message);
+			}
 
-			Thread.Sleep(1000);
-			listener.Close();
-			listener.Dispose();
-			Environment.Exit(0);
+			Exit();
 		}
 
 		/// <summary>
@@ -232,6 +243,17 @@ namespace Schumix.Client
 			}
 
 			Process.GetCurrentProcess().Kill();
+		}
+
+		private static void Exit()
+		{
+			// Close
+			sPackets.Close();
+
+			Thread.Sleep(1000);
+			sClientSocket.Close();
+			sClientSocket.Dispose();
+			Environment.Exit(0);
 		}
 	}
 }
