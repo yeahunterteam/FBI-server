@@ -26,14 +26,12 @@ namespace Schumix.Framework.Config
 	{
 		private readonly LocalizationConsole sLConsole = Singleton<LocalizationConsole>.Instance;
 		public static bool Enabled { get; private set; }
-		public static string Host { get; private set; }
 		public static int Port { get; private set; }
 		public static string Password { get; private set; }
 
-		public ServerConfig(bool enabled, string host, int port, string password)
+		public ServerConfig(bool enabled, int port, string password)
 		{
 			Enabled  = enabled;
-			Host     = host;
 			Port     = port;
 			Password = password;
 			Log.Notice("ServerConfig", sLConsole.ServerConfig("Text"));

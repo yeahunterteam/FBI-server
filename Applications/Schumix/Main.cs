@@ -86,7 +86,6 @@ namespace Schumix
 			string localization = "start";
 			bool serverenabled = false;
 			int serverport = -1;
-			string serverhost = "0.0.0.0";
 			string serverpassword = "0";
 			bool colorbindmode = false;
 			System.Console.BackgroundColor = ConsoleColor.Black;
@@ -133,13 +132,6 @@ namespace Schumix
 				{
 					if(arg.Substring(arg.IndexOf("=")+1) != string.Empty)
 						serverenabled = Convert.ToBoolean(arg.Substring(arg.IndexOf("=")+1));
-
-					continue;
-				}
-				else if(arg.Contains("--server-host="))
-				{
-					if(arg.Substring(arg.IndexOf("=")+1) != string.Empty)
-						serverhost = arg.Substring(arg.IndexOf("=")+1);
 
 					continue;
 				}
@@ -201,7 +193,7 @@ namespace Schumix
 			   CultureInfo.CurrentCulture.Name == "hu-HU" && sLConsole.Locale == "huHU")
 				System.Console.OutputEncoding = Encoding.GetEncoding(852);
 
-			new ServerConfig(serverenabled ? serverenabled : ServerConfig.Enabled, serverhost != "0.0.0.0" ? serverhost : ServerConfig.Host,
+			new ServerConfig(serverenabled ? serverenabled : ServerConfig.Enabled,
 				serverport != -1 ? serverport : ServerConfig.Port, serverpassword != "0" ? serverpassword : ServerConfig.Password);
 
 			System.Console.WriteLine();
@@ -239,7 +231,6 @@ namespace Schumix
 			System.Console.WriteLine("\t--console-encoding=Value\tSet up the program's character encoding");
 			System.Console.WriteLine("\t--console-localization=Value\tSet up the program's console language settings");
 			System.Console.WriteLine("\t--server-enabled=Value\t\tPremition to join the server.");
-			System.Console.WriteLine("\t--server-host=<host>\t\tSet server host.");
 			System.Console.WriteLine("\t--server-port=<port>\t\tSet server port.");
 			System.Console.WriteLine("\t--server-password=<pass>\tSet password.");
 			System.Console.WriteLine("\t--server-identify=Value\t\tSet identify.");

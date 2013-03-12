@@ -2,7 +2,6 @@
 Schumix:
     Server:
         Enabled: False
-        Host: 127.0.0.1
         Port: 35220
         Password: schumix
     Irc:
@@ -28,8 +27,6 @@ Schumix:
             Vhost: False
         Wait:
             MessageSending: 400
-        Command:
-            Prefix: "$"
         MessageType: Privmsg
     Log:
         FileName: Schumix.log

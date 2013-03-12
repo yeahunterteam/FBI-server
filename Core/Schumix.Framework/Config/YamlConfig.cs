@@ -170,11 +170,10 @@ namespace Schumix.Framework.Config
 		private void ServerMap(IDictionary<YamlNode, YamlNode> nodes)
 		{
 			bool ServerEnabled = (!nodes.IsNull() && nodes.ContainsKey("Enabled")) ? Convert.ToBoolean(nodes["Enabled".ToYamlNode()].ToString()) : d_serverenabled;
-			string ServerHost = (!nodes.IsNull() && nodes.ContainsKey("Host")) ? nodes["Host".ToYamlNode()].ToString() : d_serverhost;
 			int ServerPort = (!nodes.IsNull() && nodes.ContainsKey("Port")) ? Convert.ToInt32(nodes["Port".ToYamlNode()].ToString()) : d_serverport;
 			string ServerPassword = (!nodes.IsNull() && nodes.ContainsKey("Password")) ? nodes["Password".ToYamlNode()].ToString() : d_serverpassword;
 
-			new ServerConfig(ServerEnabled, ServerHost, ServerPort, ServerPassword);
+			new ServerConfig(ServerEnabled, ServerPort, ServerPassword);
 		}
 
 		private void IrcMap(IDictionary<YamlNode, YamlNode> nodes)
@@ -202,10 +201,9 @@ namespace Schumix.Framework.Config
 				bool UseHostServ             = d_usehostserv;
 				bool HostServStatus          = d_hostservstatus;
 				int MessageSending           = d_messagesending;
-				string CommandPrefix         = d_commandprefix;
 				string MessageType           = d_messagetype;
 
-				IrcList.Add(ServerName.ToLower(), new IRCConfigBase(ServerId, Server, Port, Ssl, NickName, NickName2, NickName3, UserName, UserInfo, MasterChannel, MasterChannelPassword.Trim(), IgnoreChannels, IgnoreNames, UseNickServ, NickServPassword, UseHostServ, HostServStatus, MessageSending, CommandPrefix, MessageType));
+				IrcList.Add(ServerName.ToLower(), new IRCConfigBase(ServerId, Server, Port, Ssl, NickName, NickName2, NickName3, UserName, UserInfo, MasterChannel, MasterChannelPassword.Trim(), IgnoreChannels, IgnoreNames, UseNickServ, NickServPassword, UseHostServ, HostServStatus, MessageSending, MessageType));
 			}
 			else
 			{
@@ -263,14 +261,6 @@ namespace Schumix.Framework.Config
 						MessageSending = (!node2.IsNull() && node2.ContainsKey("MessageSending")) ? Convert.ToInt32(node2["MessageSending".ToYamlNode()].ToString()) : d_messagesending;
 					}
 
-					string CommandPrefix = d_commandprefix;
-
-					if(!node.IsNull() && node.ContainsKey("Command"))
-					{
-						var node2 = ((YamlMappingNode)node["Command".ToYamlNode()]).Children;
-						CommandPrefix = (!node2.IsNull() && node2.ContainsKey("Prefix")) ? node2["Prefix".ToYamlNode()].ToString() : d_commandprefix;
-					}
-
 					string MessageType = (!node.IsNull() && node.ContainsKey("MessageType")) ? node["MessageType".ToYamlNode()].ToString() : d_messagetype;
 
 					if(MasterChannel.Length >= 2 && MasterChannel.Trim().Length > 1 && MasterChannel.Substring(0, 1) != "#")
@@ -282,7 +272,7 @@ namespace Schumix.Framework.Config
 						Log.Error("YmlConfig", sLConsole.Config("Text12"), ServerName);
 					else
 					{
-						IrcList.Add(ServerName.ToLower(), new IRCConfigBase(ServerId, Server, Port, Ssl, NickName, NickName2, NickName3, UserName, UserInfo, MasterChannel, MasterChannelPassword.Trim(), IgnoreChannels, IgnoreNames, UseNickServ, NickServPassword, UseHostServ, HostServStatus, MessageSending, CommandPrefix, MessageType));
+						IrcList.Add(ServerName.ToLower(), new IRCConfigBase(ServerId, Server, Port, Ssl, NickName, NickName2, NickName3, UserName, UserInfo, MasterChannel, MasterChannelPassword.Trim(), IgnoreChannels, IgnoreNames, UseNickServ, NickServPassword, UseHostServ, HostServStatus, MessageSending, MessageType));
 						ServerId++;
 					}
 				}
@@ -343,7 +333,6 @@ namespace Schumix.Framework.Config
 		{
 			var map = new YamlMappingNode();
 			map.Add("Enabled",  (!nodes.IsNull() && nodes.ContainsKey("Enabled")) ? nodes["Enabled".ToYamlNode()].ToString() : d_serverenabled.ToString());
-			map.Add("Host",     (!nodes.IsNull() && nodes.ContainsKey("Host")) ? nodes["Host".ToYamlNode()].ToString() : d_serverhost);
 			map.Add("Port",     (!nodes.IsNull() && nodes.ContainsKey("Port")) ? nodes["Port".ToYamlNode()].ToString() : d_serverport.ToString());
 			map.Add("Password", (!nodes.IsNull() && nodes.ContainsKey("Password")) ? nodes["Password".ToYamlNode()].ToString() : d_serverpassword);
 			return map;
@@ -395,7 +384,6 @@ namespace Schumix.Framework.Config
 				map2.Add("MessageSending", d_messagesending.ToString());
 				map.Add("Wait",            map2);
 				map2 = new YamlMappingNode();
-				map2.Add("Prefix",         "\"" + d_commandprefix + "\"");
 				map.Add("Command",         map2);
 				map.Add("MessageType",     d_messagetype);
 			}
@@ -470,17 +458,6 @@ namespace Schumix.Framework.Config
 					map2.Add("MessageSending", d_messagesending.ToString());
 
 				map.Add("Wait", map2);
-				map2 = new YamlMappingNode();
-
-				if(!node.IsNull() && node.ContainsKey("Command"))
-				{
-					var node2 = ((YamlMappingNode)node["Command".ToYamlNode()]).Children;
-					map2.Add("Prefix", "\"" + ((!node2.IsNull() && node2.ContainsKey("Prefix")) ? node2["Prefix".ToYamlNode()].ToString() : d_commandprefix) + "\"");
-				}
-				else
-					map2.Add("Prefix", "\"" + d_commandprefix + "\"");
-
-				map.Add("Command",     map2);
 				map.Add("MessageType", (!node.IsNull() && node.ContainsKey("MessageType")) ? node["MessageType".ToYamlNode()].ToString() : d_messagetype);
 			}
 

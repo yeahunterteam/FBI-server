@@ -32,7 +32,6 @@ namespace Schumix.Framework.Config
 		protected const string d_irclogdirectory       = "Channels";
 		protected const bool d_irclog                  = false;
 		protected const bool d_serverenabled           = false;
-		protected const string d_serverhost            = "127.0.0.1";
 		protected const int d_serverport               = 35220;
 		protected const string d_serverpassword        = "schumix";
 		protected const string d_servername            = "Default";
@@ -53,7 +52,6 @@ namespace Schumix.Framework.Config
 		protected const bool d_usehostserv             = false;
 		protected const bool d_hostservstatus          = false;
 		protected const int d_messagesending           = 400;
-		protected const string d_commandprefix         = "$";
 		protected const string d_messagetype           = "Privmsg";
 		protected const bool d_mysqlenabled            = false;
 		protected const string d_mysqlhost             = "localhost";

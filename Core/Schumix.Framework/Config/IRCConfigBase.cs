@@ -42,10 +42,9 @@ namespace Schumix.Framework.Config
 		public bool UseHostServ { get; private set; }
 		public bool HostServEnabled { get; private set; }
 		public int MessageSending { get; private set; }
-		public string CommandPrefix { get; private set; }
 		public string MessageType { get; private set; }
 
-		public IRCConfigBase(int serverid, string server, int port, bool ssl, string nickname, string nickname2, string nickname3, string username, string userinfo, string masterchannel, string masterchannelpassword, string ignorechannels, string ignorenames, bool usenickserv, string nickservpassword, bool usehostserv, bool hostservenabled, int messagesending, string commandprefix, string messagetype)
+		public IRCConfigBase(int serverid, string server, int port, bool ssl, string nickname, string nickname2, string nickname3, string username, string userinfo, string masterchannel, string masterchannelpassword, string ignorechannels, string ignorenames, bool usenickserv, string nickservpassword, bool usehostserv, bool hostservenabled, int messagesending, string messagetype)
 		{
 			ServerId              = serverid;
 			Server                = server;
@@ -65,7 +64,6 @@ namespace Schumix.Framework.Config
 			UseHostServ           = usehostserv;
 			HostServEnabled       = hostservenabled;
 			MessageSending        = messagesending;
-			CommandPrefix         = commandprefix;
 			MessageType           = messagetype;
 		}
 	}
