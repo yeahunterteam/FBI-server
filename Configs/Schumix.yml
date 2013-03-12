@@ -17,8 +17,6 @@ Schumix:
         MasterChannel:
             Name: "#schumix2"
             Password:  
-        IgnoreChannels:  
-        IgnoreNames:  
         NickServ:
             Enabled: False
             Password: password

@@ -194,8 +194,6 @@ namespace Schumix.Framework.Config
 				string UserInfo              = d_userinfo;
 				string MasterChannel         = d_masterchannel;
 				string MasterChannelPassword = d_masterchannelpassword;
-				string IgnoreChannels        = d_ignorechannels;
-				string IgnoreNames           = d_ignorenames;
 				bool UseNickServ             = d_usenickserv;
 				string NickServPassword      = d_nickservpassword;
 				bool UseHostServ             = d_usehostserv;
@@ -203,7 +201,7 @@ namespace Schumix.Framework.Config
 				int MessageSending           = d_messagesending;
 				string MessageType           = d_messagetype;
 
-				IrcList.Add(ServerName.ToLower(), new IRCConfigBase(ServerId, Server, Port, Ssl, NickName, NickName2, NickName3, UserName, UserInfo, MasterChannel, MasterChannelPassword.Trim(), IgnoreChannels, IgnoreNames, UseNickServ, NickServPassword, UseHostServ, HostServStatus, MessageSending, MessageType));
+				IrcList.Add(ServerName.ToLower(), new IRCConfigBase(ServerId, Server, Port, Ssl, NickName, NickName2, NickName3, UserName, UserInfo, MasterChannel, MasterChannelPassword.Trim(), UseNickServ, NickServPassword, UseHostServ, HostServStatus, MessageSending, MessageType));
 			}
 			else
 			{
@@ -229,9 +227,6 @@ namespace Schumix.Framework.Config
 						MasterChannel = (!node2.IsNull() && node2.ContainsKey("Name")) ? node2["Name".ToYamlNode()].ToString() : d_masterchannel;
 						MasterChannelPassword = (!node2.IsNull() && node2.ContainsKey("Password")) ? node2["Password".ToYamlNode()].ToString() : d_masterchannelpassword;
 					}
-
-					string IgnoreChannels = (!node.IsNull() && node.ContainsKey("IgnoreChannels")) ? node["IgnoreChannels".ToYamlNode()].ToString() : d_ignorechannels;
-					string IgnoreNames = (!node.IsNull() && node.ContainsKey("IgnoreNames")) ? node["IgnoreNames".ToYamlNode()].ToString() : d_ignorenames;
 
 					bool UseNickServ = d_usenickserv;
 					string NickServPassword = d_nickservpassword;
@@ -272,7 +267,7 @@ namespace Schumix.Framework.Config
 						Log.Error("YmlConfig", sLConsole.Config("Text12"), ServerName);
 					else
 					{
-						IrcList.Add(ServerName.ToLower(), new IRCConfigBase(ServerId, Server, Port, Ssl, NickName, NickName2, NickName3, UserName, UserInfo, MasterChannel, MasterChannelPassword.Trim(), IgnoreChannels, IgnoreNames, UseNickServ, NickServPassword, UseHostServ, HostServStatus, MessageSending, MessageType));
+						IrcList.Add(ServerName.ToLower(), new IRCConfigBase(ServerId, Server, Port, Ssl, NickName, NickName2, NickName3, UserName, UserInfo, MasterChannel, MasterChannelPassword.Trim(), UseNickServ, NickServPassword, UseHostServ, HostServStatus, MessageSending, MessageType));
 						ServerId++;
 					}
 				}
@@ -370,8 +365,6 @@ namespace Schumix.Framework.Config
 				map2.Add("Name",           "\"" + d_masterchannel + "\"");
 				map2.Add("Password",       d_masterchannelpassword);
 				map.Add("MasterChannel",   map2);
-				map.Add("IgnoreChannels",  d_ignorechannels);
-				map.Add("IgnoreNames",     d_ignorenames);
 				map2 = new YamlMappingNode();
 				map2.Add("Enabled",        d_usenickserv.ToString());
 				map2.Add("Password",       d_nickservpassword);
@@ -415,8 +408,6 @@ namespace Schumix.Framework.Config
 				}
 
 				map.Add("MasterChannel",  map2);
-				map.Add("IgnoreChannels", (!node.IsNull() && node.ContainsKey("IgnoreChannels")) ? node["IgnoreChannels".ToYamlNode()].ToString() : d_ignorechannels);
-				map.Add("IgnoreNames",    (!node.IsNull() && node.ContainsKey("IgnoreNames")) ? node["IgnoreNames".ToYamlNode()].ToString() : d_ignorenames);
 				map2 = new YamlMappingNode();
 
 				if(!node.IsNull() && node.ContainsKey("NickServ"))

@@ -329,9 +329,6 @@ namespace Schumix.Irc
 			else
 				Log.Warning("ChannelInfo", sLConsole.ChannelInfo("Text8"));
 
-			if(IRCConfig.List[_servername].IgnoreChannels.Length > 0)
-				Log.Notice("ChannelInfo", sLConsole.ChannelInfo("Text9"), IRCConfig.List[_servername].IgnoreChannels);
-
 			if(SchumixBase.STime)
 			{
 				SchumixBase.timer.StartTimer();

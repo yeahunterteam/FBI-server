@@ -45,8 +45,6 @@ namespace Schumix.Framework.Config
 		protected const string d_userinfo              = "FBI IRC Bot";
 		protected const string d_masterchannel         = "#fbi";
 		protected const string d_masterchannelpassword = " ";
-		protected const string d_ignorechannels        = " ";
-		protected const string d_ignorenames           = " ";
 		protected const bool d_usenickserv             = false;
 		protected const string d_nickservpassword      = "password";
 		protected const bool d_usehostserv             = false;

@@ -35,8 +35,6 @@ namespace Schumix.Framework.Config
 		public string UserInfo { get; private set; }
 		public string MasterChannel { get; private set; }
 		public string MasterChannelPassword { get; private set; }
-		public string IgnoreChannels { get; private set; }
-		public string IgnoreNames { get; private set; }
 		public bool UseNickServ { get; private set; }
 		public string NickServPassword { get; private set; }
 		public bool UseHostServ { get; private set; }
@@ -44,7 +42,7 @@ namespace Schumix.Framework.Config
 		public int MessageSending { get; private set; }
 		public string MessageType { get; private set; }
 
-		public IRCConfigBase(int serverid, string server, int port, bool ssl, string nickname, string nickname2, string nickname3, string username, string userinfo, string masterchannel, string masterchannelpassword, string ignorechannels, string ignorenames, bool usenickserv, string nickservpassword, bool usehostserv, bool hostservenabled, int messagesending, string messagetype)
+		public IRCConfigBase(int serverid, string server, int port, bool ssl, string nickname, string nickname2, string nickname3, string username, string userinfo, string masterchannel, string masterchannelpassword, bool usenickserv, string nickservpassword, bool usehostserv, bool hostservenabled, int messagesending, string messagetype)
 		{
 			ServerId              = serverid;
 			Server                = server;
@@ -57,8 +55,6 @@ namespace Schumix.Framework.Config
 			UserInfo              = userinfo;
 			MasterChannel         = masterchannel.ToLower();
 			MasterChannelPassword = masterchannelpassword;
-			IgnoreChannels        = ignorechannels;
-			IgnoreNames           = ignorenames;
 			UseNickServ           = usenickserv;
 			NickServPassword      = nickservpassword;
 			UseHostServ           = usehostserv;
