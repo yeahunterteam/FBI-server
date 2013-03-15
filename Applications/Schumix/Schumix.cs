@@ -54,7 +54,7 @@ namespace Schumix
 				Log.Notice("SchumixBot", sLConsole.SchumixBot("Text"));
 				Log.Debug("SchumixBot", sLConsole.SchumixBot("Text2"));
 
-				foreach(var sn in IRCConfig.List)
+				/*foreach(var sn in IRCConfig.List)
 				{
 					if(!e)
 					{
@@ -89,7 +89,7 @@ namespace Schumix
 							Thread.Sleep(1000);
 						}
 					}
-				});
+				});*/
 
 				Log.Debug("SchumixBot", sLConsole.SchumixBot("Text3"));
 				new Console.Console(eserver);

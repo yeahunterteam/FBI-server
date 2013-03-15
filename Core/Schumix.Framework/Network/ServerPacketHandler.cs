@@ -138,7 +138,7 @@ namespace Schumix.Framework.Network
 
 		private void CommitHandler(SchumixPacket pck, NetworkStream stream, string hst, int bck)
 		{
-			string project = pck.Read<string>();
+			/*string project = pck.Read<string>();
 			string refname = pck.Read<string>();
 			string rev = pck.Read<string>().ToLower();
 			string author = pck.Read<string>();
@@ -198,12 +198,12 @@ namespace Schumix.Framework.Network
 				sSendMessage.SendCMPrivmsg(chan, "[3{0}] {1} pushed new commit to 7{2}: 02{3}", project, author, refname, url);
 				sSendMessage.SendCMPrivmsg(chan, "3{0}15/7{1} 10{2} {3}: {4}", project, refname, rev, author, message);
 				Thread.Sleep(1000);
-			}
+			}*/
 		}
 
 		private void AddChannelHandler(SchumixPacket pck, NetworkStream stream, string hst, int bck)
 		{
-			string channels = pck.Read<string>().ToLower();
+			/*string channels = pck.Read<string>().ToLower();
 			string ircserver = pck.Read<string>().ToLower();
 			
 			if(!sIrcBase.Networks.ContainsKey(ircserver))
@@ -251,12 +251,12 @@ namespace Schumix.Framework.Network
 				sChannelInfo.ChannelListReload();
 				sChannelInfo.ChannelFunctionsReload();
 				Thread.Sleep(1000);
-			}
+			}*/
 		}
 
 		private void RemoveChannelHandler(SchumixPacket pck, NetworkStream stream, string hst, int bck)
 		{
-			string channels = pck.Read<string>().ToLower();
+			/*string channels = pck.Read<string>().ToLower();
 			string ircserver = pck.Read<string>().ToLower();
 			
 			if(!sIrcBase.Networks.ContainsKey(ircserver))
@@ -301,7 +301,7 @@ namespace Schumix.Framework.Network
 				sChannelInfo.ChannelListReload();
 				sChannelInfo.ChannelFunctionsReload();
 				Thread.Sleep(1000);
-			}
+			}*/
 		}
 
 		public void SendPacketBack(SchumixPacket packet, NetworkStream stream, string hst, int backport)

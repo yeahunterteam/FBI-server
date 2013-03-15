@@ -178,102 +178,18 @@ namespace Schumix.Framework.Config
 
 		private void IrcMap(IDictionary<YamlNode, YamlNode> nodes)
 		{
-			int ServerId = 1;
-			var IrcList = new Dictionary<string, IRCConfigBase>();
-
-			if(nodes.IsNull())
+			int MessageSending = d_messagesending;
+			
+			if(!nodes.IsNull() && nodes.ContainsKey("Wait"))
 			{
-				string ServerName            = d_servername;
-				string Server                = d_server;
-				int Port                     = d_port;
-				bool Ssl                     = d_ssl;
-				string NickName              = d_nickname;
-				string NickName2             = d_nickname2;
-				string NickName3             = d_nickname3;
-				string UserName              = d_username;
-				string UserInfo              = d_userinfo;
-				string MasterChannel         = d_masterchannel;
-				string MasterChannelPassword = d_masterchannelpassword;
-				bool UseNickServ             = d_usenickserv;
-				string NickServPassword      = d_nickservpassword;
-				bool UseHostServ             = d_usehostserv;
-				bool HostServStatus          = d_hostservstatus;
-				int MessageSending           = d_messagesending;
-				string MessageType           = d_messagetype;
-
-				IrcList.Add(ServerName.ToLower(), new IRCConfigBase(ServerId, Server, Port, Ssl, NickName, NickName2, NickName3, UserName, UserInfo, MasterChannel, MasterChannelPassword.Trim(), UseNickServ, NickServPassword, UseHostServ, HostServStatus, MessageSending, MessageType));
+				var node2 = ((YamlMappingNode)nodes["Wait".ToYamlNode()]).Children;
+				MessageSending = (!node2.IsNull() && node2.ContainsKey("MessageSending")) ? Convert.ToInt32(node2["MessageSending".ToYamlNode()].ToString()) : d_messagesending;
 			}
-			else
-			{
-				foreach(var irc in nodes)
-				{
-					var node = ((YamlMappingNode)irc.Value).Children;
-					string ServerName = (!node.IsNull() && node.ContainsKey("ServerName")) ? node["ServerName".ToYamlNode()].ToString() : d_servername;
-					string Server = (!node.IsNull() && node.ContainsKey("Server")) ? node["Server".ToYamlNode()].ToString() : d_server;
-					int Port = (!node.IsNull() && node.ContainsKey("Port")) ? Convert.ToInt32(node["Port".ToYamlNode()].ToString()) : d_port;
-					bool Ssl = (!node.IsNull() && node.ContainsKey("Ssl")) ? Convert.ToBoolean(node["Ssl".ToYamlNode()].ToString()) : d_ssl;
-					string NickName = (!node.IsNull() && node.ContainsKey("NickName")) ? node["NickName".ToYamlNode()].ToString() : d_nickname;
-					string NickName2 = (!node.IsNull() && node.ContainsKey("NickName2")) ? node["NickName2".ToYamlNode()].ToString() : d_nickname2;
-					string NickName3 = (!node.IsNull() && node.ContainsKey("NickName3")) ? node["NickName3".ToYamlNode()].ToString() : d_nickname3;
-					string UserName = (!node.IsNull() && node.ContainsKey("UserName")) ? node["UserName".ToYamlNode()].ToString() : d_username;
-					string UserInfo = (!node.IsNull() && node.ContainsKey("UserInfo")) ? node["UserInfo".ToYamlNode()].ToString() : d_userinfo;
+			
+			string MessageType = (!nodes.IsNull() && nodes.ContainsKey("MessageType")) ? nodes["MessageType".ToYamlNode()].ToString() : d_messagetype;
 
-					string MasterChannel = d_masterchannel;
-					string MasterChannelPassword = d_masterchannelpassword;
 
-					if(!node.IsNull() && node.ContainsKey("MasterChannel"))
-					{
-						var node2 = ((YamlMappingNode)node["MasterChannel".ToYamlNode()]).Children;
-						MasterChannel = (!node2.IsNull() && node2.ContainsKey("Name")) ? node2["Name".ToYamlNode()].ToString() : d_masterchannel;
-						MasterChannelPassword = (!node2.IsNull() && node2.ContainsKey("Password")) ? node2["Password".ToYamlNode()].ToString() : d_masterchannelpassword;
-					}
-
-					bool UseNickServ = d_usenickserv;
-					string NickServPassword = d_nickservpassword;
-
-					if(!node.IsNull() && node.ContainsKey("NickServ"))
-					{
-						var node2 = ((YamlMappingNode)node["NickServ".ToYamlNode()]).Children;
-						UseNickServ = (!node2.IsNull() && node2.ContainsKey("Enabled")) ? Convert.ToBoolean(node2["Enabled".ToYamlNode()].ToString()) : d_usenickserv;
-						NickServPassword = (!node2.IsNull() && node2.ContainsKey("Password")) ? node2["Password".ToYamlNode()].ToString() : d_nickservpassword;
-					}
-
-					bool UseHostServ = d_usehostserv;
-					bool HostServStatus = d_hostservstatus;
-
-					if(!node.IsNull() && node.ContainsKey("HostServ"))
-					{
-						var node2 = ((YamlMappingNode)node["HostServ".ToYamlNode()]).Children;
-						UseHostServ = (!node2.IsNull() && node2.ContainsKey("Enabled")) ? Convert.ToBoolean(node2["Enabled".ToYamlNode()].ToString()) : d_usehostserv;
-						HostServStatus = (!node2.IsNull() && node2.ContainsKey("Vhost")) ? Convert.ToBoolean(node2["Vhost".ToYamlNode()].ToString()) : d_hostservstatus;
-					}
-
-					int MessageSending = d_messagesending;
-
-					if(!node.IsNull() && node.ContainsKey("Wait"))
-					{
-						var node2 = ((YamlMappingNode)node["Wait".ToYamlNode()]).Children;
-						MessageSending = (!node2.IsNull() && node2.ContainsKey("MessageSending")) ? Convert.ToInt32(node2["MessageSending".ToYamlNode()].ToString()) : d_messagesending;
-					}
-
-					string MessageType = (!node.IsNull() && node.ContainsKey("MessageType")) ? node["MessageType".ToYamlNode()].ToString() : d_messagetype;
-
-					if(MasterChannel.Length >= 2 && MasterChannel.Trim().Length > 1 && MasterChannel.Substring(0, 1) != "#")
-						MasterChannel = "#" + MasterChannel;
-					else if(MasterChannel.Length < 2 && MasterChannel.Trim().Length <= 1)
-						MasterChannel = d_masterchannel;
-
-					if(IrcList.ContainsKey(ServerName.ToLower()))
-						Log.Error("YmlConfig", sLConsole.Config("Text12"), ServerName);
-					else
-					{
-						IrcList.Add(ServerName.ToLower(), new IRCConfigBase(ServerId, Server, Port, Ssl, NickName, NickName2, NickName3, UserName, UserInfo, MasterChannel, MasterChannelPassword.Trim(), UseNickServ, NickServPassword, UseHostServ, HostServStatus, MessageSending, MessageType));
-						ServerId++;
-					}
-				}
-			}
-
-			new IRCConfig(IrcList);
+			new IRCConfig(MessageSending, MessageType);
 		}
 
 		private void MySqlMap(IDictionary<YamlNode, YamlNode> nodes)
@@ -349,109 +265,18 @@ namespace Schumix.Framework.Config
 		private YamlMappingNode CreateIrcMap(IDictionary<YamlNode, YamlNode> nodes)
 		{
 			var map = new YamlMappingNode();
+			var map2 = new YamlMappingNode();
 
-			if(nodes.IsNull())
+			if(!nodes.IsNull() && nodes.ContainsKey("Wait"))
 			{
-				map.Add("ServerName",      d_servername);
-				map.Add("Server",          d_server);
-				map.Add("Port",            d_port.ToString());
-				map.Add("Ssl",             d_ssl.ToString());
-				map.Add("NickName",        d_nickname);
-				map.Add("NickName2",       d_nickname2);
-				map.Add("NickName3",       d_nickname3);
-				map.Add("UserName",        d_username);
-				map.Add("UserInfo",        d_userinfo);
-				var map2 = new YamlMappingNode();
-				map2.Add("Name",           "\"" + d_masterchannel + "\"");
-				map2.Add("Password",       d_masterchannelpassword);
-				map.Add("MasterChannel",   map2);
-				map2 = new YamlMappingNode();
-				map2.Add("Enabled",        d_usenickserv.ToString());
-				map2.Add("Password",       d_nickservpassword);
-				map.Add("NickServ",        map2);
-				map2 = new YamlMappingNode();
-				map2.Add("Enabled",        d_usehostserv.ToString());
-				map2.Add("Vhost",          d_hostservstatus.ToString());
-				map.Add("HostServ",        map2);
-				map2 = new YamlMappingNode();
-				map2.Add("MessageSending", d_messagesending.ToString());
-				map.Add("Wait",            map2);
-				map2 = new YamlMappingNode();
-				map.Add("Command",         map2);
-				map.Add("MessageType",     d_messagetype);
+				var node2 = ((YamlMappingNode)nodes["Wait".ToYamlNode()]).Children;
+				map2.Add("MessageSending", (!node2.IsNull() && node2.ContainsKey("MessageSending")) ? node2["MessageSending".ToYamlNode()].ToString() : d_messagesending.ToString());
 			}
 			else
-			{
-				var node = nodes;
-				map.Add("ServerName", (!node.IsNull() && node.ContainsKey("ServerName")) ? node["ServerName".ToYamlNode()].ToString() : d_servername);
-				map.Add("Server",     (!node.IsNull() && node.ContainsKey("Server")) ? node["Server".ToYamlNode()].ToString() : d_server);
-				map.Add("Port",       (!node.IsNull() && node.ContainsKey("Port")) ? node["Port".ToYamlNode()].ToString() : d_port.ToString());
-				map.Add("Ssl",        (!node.IsNull() && node.ContainsKey("Ssl")) ? node["Ssl".ToYamlNode()].ToString() : d_ssl.ToString());
-				map.Add("NickName",   (!node.IsNull() && node.ContainsKey("NickName")) ? node["NickName".ToYamlNode()].ToString() : d_nickname);
-				map.Add("NickName2",  (!node.IsNull() && node.ContainsKey("NickName2")) ? node["NickName2".ToYamlNode()].ToString() : d_nickname2);
-				map.Add("NickName3",  (!node.IsNull() && node.ContainsKey("NickName3")) ? node["NickName3".ToYamlNode()].ToString() : d_nickname3);
-				map.Add("UserName",   (!node.IsNull() && node.ContainsKey("UserName")) ? node["UserName".ToYamlNode()].ToString() : d_username);
-				map.Add("UserInfo",   (!node.IsNull() && node.ContainsKey("UserInfo")) ? node["UserInfo".ToYamlNode()].ToString() : d_userinfo);
+				map2.Add("MessageSending", d_messagesending.ToString());
 
-				var map2 = new YamlMappingNode();
-
-				if(!node.IsNull() && node.ContainsKey("MasterChannel"))
-				{
-					var node2 = ((YamlMappingNode)node["MasterChannel".ToYamlNode()]).Children;
-					map2.Add("Name",     "\"" + ((!node2.IsNull() && node2.ContainsKey("Name")) ? node2["Name".ToYamlNode()].ToString() : d_masterchannel) + "\"");
-					map2.Add("Password", (!node2.IsNull() && node2.ContainsKey("Password")) ? node2["Password".ToYamlNode()].ToString() : d_masterchannelpassword);
-				}
-				else
-				{
-					map2.Add("Name",     "\"" + d_masterchannel + "\"");
-					map2.Add("Password", d_masterchannelpassword);
-				}
-
-				map.Add("MasterChannel",  map2);
-				map2 = new YamlMappingNode();
-
-				if(!node.IsNull() && node.ContainsKey("NickServ"))
-				{
-					var node2 = ((YamlMappingNode)node["NickServ".ToYamlNode()]).Children;
-					map2.Add("Enabled",  (!node2.IsNull() && node2.ContainsKey("Enabled")) ? node2["Enabled".ToYamlNode()].ToString() : d_usenickserv.ToString());
-					map2.Add("Password", (!node2.IsNull() && node2.ContainsKey("Password")) ? node2["Password".ToYamlNode()].ToString() : d_nickservpassword);
-				}
-				else
-				{
-					map2.Add("Enabled",  d_usenickserv.ToString());
-					map2.Add("Password", d_nickservpassword);
-				}
-
-				map.Add("NickServ", map2);
-				map2 = new YamlMappingNode();
-
-				if(!node.IsNull() && node.ContainsKey("HostServ"))
-				{
-					var node2 = ((YamlMappingNode)node["HostServ".ToYamlNode()]).Children;
-					map2.Add("Enabled", (!node2.IsNull() && node2.ContainsKey("Enabled")) ? node2["Enabled".ToYamlNode()].ToString() : d_usehostserv.ToString());
-					map2.Add("Vhost",   (!node2.IsNull() && node2.ContainsKey("Vhost")) ? node2["Vhost".ToYamlNode()].ToString() : d_hostservstatus.ToString());
-				}
-				else
-				{
-					map2.Add("Enabled", d_usehostserv.ToString());
-					map2.Add("Vhost",   d_hostservstatus.ToString());
-				}
-
-				map.Add("HostServ", map2);
-				map2 = new YamlMappingNode();
-
-				if(!node.IsNull() && node.ContainsKey("Wait"))
-				{
-					var node2 = ((YamlMappingNode)node["Wait".ToYamlNode()]).Children;
-					map2.Add("MessageSending", (!node2.IsNull() && node2.ContainsKey("MessageSending")) ? node2["MessageSending".ToYamlNode()].ToString() : d_messagesending.ToString());
-				}
-				else
-					map2.Add("MessageSending", d_messagesending.ToString());
-
-				map.Add("Wait", map2);
-				map.Add("MessageType", (!node.IsNull() && node.ContainsKey("MessageType")) ? node["MessageType".ToYamlNode()].ToString() : d_messagetype);
-			}
-
+			map.Add("Wait", map2);
+			map.Add("MessageType", (!nodes.IsNull() && nodes.ContainsKey("MessageType")) ? nodes["MessageType".ToYamlNode()].ToString() : d_messagetype);
 			return map;
 		}
 

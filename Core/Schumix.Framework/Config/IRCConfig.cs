@@ -18,20 +18,19 @@
  */
 
 using System;
-using System.Collections.Generic;
 using Schumix.Framework.Localization;
 
 namespace Schumix.Framework.Config
 {
 	public sealed class IRCConfig
 	{
-		private readonly LocalizationConsole sLConsole = Singleton<LocalizationConsole>.Instance;
-		public static Dictionary<string, IRCConfigBase> List { get; private set; }
+		public int MessageSending { get; private set; }
+		public string MessageType { get; private set; }
 
-		public IRCConfig(Dictionary<string, IRCConfigBase> list)
+		public IRCConfig(int messagesending, string messagetype)
 		{
-			List = list;
-			Log.Notice("IRCConfig", sLConsole.IRCConfig("Text"));
+			MessageSending        = messagesending;
+			MessageType           = messagetype;
 		}
 	}
 }

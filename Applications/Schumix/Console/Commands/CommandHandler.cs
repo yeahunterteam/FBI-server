@@ -512,7 +512,7 @@ namespace Schumix.Console.Commands
 		/// </summary>
 		protected void HandleChannel()
 		{
-			if(Info.Length < 2)
+			/*if(Info.Length < 2)
 			{
 				Log.Notice("Console", sLManager.GetConsoleCommandText("channel"));
 				return;
@@ -884,7 +884,7 @@ namespace Schumix.Console.Commands
 							Log.Notice("Console", text[2]);
 					}
 				}
-			}
+			}*/
 		}
 
 		/// <summary>

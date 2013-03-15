@@ -95,13 +95,11 @@
     <Compile Include="Log.cs" />
     <Compile Include="Config\Consts.cs" />
     <Compile Include="Config\SchumixConfig.cs" />
-    <Compile Include="Config\IRCConfig.cs" />
     <Compile Include="Config\MySqlConfig.cs" />
     <Compile Include="Config\SQLiteConfig.cs" />
     <Compile Include="Config\LogConfig.cs" />
     <Compile Include="Config\LocalizationConfig.cs" />
     <Compile Include="Config\ServerConfig.cs" />
-    <Compile Include="Config\IRCConfigBase.cs" />
     <Compile Include="Config\YamlConfig.cs" />
     <Compile Include="Config\CrashConfig.cs" />
     <Compile Include="Config\ShutdownConfig.cs" />
@@ -129,6 +127,7 @@
     <Compile Include="Network\ServerPacketHandler.cs" />
     <Compile Include="Network\ServerPacketHandlerDelegate.cs" />
     <Compile Include="IrcMethod.cs" />
+    <Compile Include="Config\IRCConfig.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

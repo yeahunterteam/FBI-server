@@ -41,7 +41,7 @@ namespace Schumix.Irc
 
 		public bool IsNickStorage()
 		{
-			return _NickStorage.ToLower() == IRCConfig.List[_servername].NickName.ToLower();
+			return /*_NickStorage.ToLower() == IRCConfig.List[_servername].NickName.ToLower()*/ true;
 		}
 
 		public bool IsIdentify
@@ -64,7 +64,7 @@ namespace Schumix.Irc
 
 		public string ChangeNick()
 		{
-			if(_NickStorage == IRCConfig.List[_servername].NickName)
+			/*if(_NickStorage == IRCConfig.List[_servername].NickName)
 			{
 				_NickStorage = IRCConfig.List[_servername].NickName2;
 				return _NickStorage;
@@ -118,7 +118,8 @@ namespace Schumix.Irc
 			{
 				_NickStorage = IRCConfig.List[_servername].NickName;
 				return _NickStorage;
-			}
+			}*/
+			return _NickStorage;
 		}
 
 		public void ChangeNick(string newnick)

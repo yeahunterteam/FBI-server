@@ -94,7 +94,7 @@ namespace Schumix.Framework
 				Log.Notice("SchumixBase", sLConsole.SchumixBase("Text3"));
 				sLManager.Locale = LocalizationConfig.Locale;
 
-				foreach(var sn in IRCConfig.List)
+				/*foreach(var sn in IRCConfig.List)
 				{
 					DManager.Update("channels", string.Format("ServerName = '{0}'", sn.Key), string.Format("ServerId = '{0}'", sn.Value.ServerId));
 					DManager.Update("schumix", string.Format("ServerName = '{0}'", sn.Key), string.Format("ServerId = '{0}'", sn.Value.ServerId));
@@ -163,7 +163,7 @@ namespace Schumix.Framework
 					}
 					else
 						Log.Error("SchumixBase", sLConsole.ChannelInfo("Text11"));
-				}
+				}*/
 
 				Log.Debug("SchumixBase", sLConsole.SchumixBase("Text9"));
 				sCleanManager = new CleanManager();
@@ -198,7 +198,7 @@ namespace Schumix.Framework
 			}
 		}
 
-		private void NewServerSqlData(int ServerId, string ServerName)
+		/*private void NewServerSqlData(int ServerId, string ServerName)
 		{
 			var db = DManager.QueryFirstRow("SELECT * FROM channels WHERE ServerId = '{0}'", ServerId);
 			if(db.IsNull())
@@ -210,7 +210,7 @@ namespace Schumix.Framework
 				foreach(var function in Enum.GetNames(typeof(IFunctions)))
 					DManager.Insert("`schumix`(ServerId, ServerName, FunctionName, FunctionStatus)", ServerId, ServerName, function.ToLower(), On);
 			}
-		}
+		}*/
 
 		private void IsAllSchumixFunction(int ServerId, string ServerName)
 		{

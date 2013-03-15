@@ -290,8 +290,8 @@ namespace Schumix.Irc
 		{
 			_cts = new CancellationTokenSource();
 
-			if(nick)
-				sNickInfo.ChangeNick(IRCConfig.List[_servername].NickName);
+			//if(nick)
+			//	sNickInfo.ChangeNick(IRCConfig.List[_servername].NickName);
 
 			Log.Notice("Network", sLConsole.Network("Text21"), CType.ToString());
 
@@ -349,7 +349,7 @@ namespace Schumix.Irc
 			}
 
 			Connected = true;
-			sSender.NameInfo(sNickInfo.NickStorage, IRCConfig.List[_servername].UserName, IRCConfig.List[_servername].UserInfo);
+			//sSender.NameInfo(sNickInfo.NickStorage, IRCConfig.List[_servername].UserName, IRCConfig.List[_servername].UserInfo);
 
 			Log.Notice("Network", sLConsole.Network("Text13"));
 			Online = false;
@@ -519,7 +519,7 @@ namespace Schumix.Irc
 			IMessage.Args = IrcCommand.SplitToString(3, SchumixBase.Space);
 			IMessage.Args = IMessage.Args.Remove(0, 1, SchumixBase.Colon);
 
-			switch(IRCConfig.List[_servername].MessageType.ToLower())
+			/*switch(IRCConfig.List[_servername].MessageType.ToLower())
 			{
 				case "privmsg":
 					IMessage.MessageType = MessageType.Privmsg;
@@ -530,7 +530,7 @@ namespace Schumix.Irc
 				default:
 					IMessage.MessageType = MessageType.Privmsg;
 					break;
-			}
+			}*/
 
 			if(IrcMethodMap.ContainsKey(opcode))
 			{

@@ -146,7 +146,7 @@ namespace Schumix.Irc
 		{
 			lock(WriteLock)
 			{
-				switch(IRCConfig.List[sIRCMessage.ServerName].MessageType.ToLower())
+				/*switch(IRCConfig.List[sIRCMessage.ServerName].MessageType.ToLower())
 				{
 					case "privmsg":
 						SendChatMessage(sIRCMessage.MessageType, sIRCMessage.Channel, message);
@@ -157,7 +157,7 @@ namespace Schumix.Irc
 					default:
 						SendChatMessage(sIRCMessage.MessageType, sIRCMessage.Channel, message);
 						break;
-				}
+				}*/
 			}
 		}
 
@@ -292,7 +292,7 @@ namespace Schumix.Irc
 							INetwork.WriterList[_servername].WriteLine(message);
 					}
 
-					Thread.Sleep(IRCConfig.List[_servername].MessageSending);
+					//Thread.Sleep(IRCConfig.List[_servername].MessageSending);
 				}
 				catch(Exception e)
 				{

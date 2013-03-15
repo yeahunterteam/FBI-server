@@ -60,7 +60,7 @@ namespace Schumix.Irc
 
 		protected void HandleSuccessfulAuth(IRCMessage sIRCMessage)
 		{
-			Console.WriteLine();
+			/*Console.WriteLine();
 			Log.Success("MessageHandler", sLConsole.MessageHandler("Text"));
 			Task.Factory.StartNew(() => IsJoin());
 
@@ -96,7 +96,7 @@ namespace Schumix.Irc
 				}
 			}
 
-			SchumixBase.UrlTitleEnabled = true;
+			SchumixBase.UrlTitleEnabled = true;*/
 		}
 
 		protected void HandleWaitingForConnection(IRCMessage sIRCMessage)
@@ -120,7 +120,7 @@ namespace Schumix.Irc
 		/// </summary>
 		protected void HandleNotice(IRCMessage sIRCMessage)
 		{
-			sIRCMessage.MessageType = MessageType.Notice;
+			/*sIRCMessage.MessageType = MessageType.Notice;
 
 			if(ConsoleLog.CLog)
 			{
@@ -178,7 +178,7 @@ namespace Schumix.Irc
 				{
 					ConnectAllChannel();
 				}
-			}
+			}*/
 		}
 
 		/// <summary>

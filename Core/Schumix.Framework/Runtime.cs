@@ -50,7 +50,7 @@ namespace Schumix.Framework
 			if(ShutdownConfig.MaxMemory == 0)
 				return;
 
-			int ircnetwork = IRCConfig.List.Count > 1 ? 40 * IRCConfig.List.Count : 0;
+			/*int ircnetwork = IRCConfig.List.Count > 1 ? 40 * IRCConfig.List.Count : 0;
 
 			if((Process.GetCurrentProcess().WorkingSet64/1024/1024 >= ShutdownConfig.MaxMemory && IRCConfig.List.IsNull()) ||
 			   Process.GetCurrentProcess().WorkingSet64/1024/1024 >= ShutdownConfig.MaxMemory + ircnetwork)
@@ -72,7 +72,7 @@ namespace Schumix.Framework
 				}
 
 				Process.GetCurrentProcess().Kill();
-			}
+			}*/
 		}
 
 		public void SetProcessName(string Name)

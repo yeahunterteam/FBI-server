@@ -65,11 +65,11 @@ namespace Schumix.Framework.Clean
 				{
 					string name = row["ServerName"].ToString();
 
-					if(!IRCConfig.List.ContainsKey(name))
+					/*if(!IRCConfig.List.ContainsKey(name))
 					{
 						SchumixBase.DManager.Delete(table, string.Format("ServerName = '{0}'", name));
 						Log.Debug("CleanDatabase", sLConsole.CleanDatabase("Text3"), name, table);
-					}
+					}*/
 				}
 			}
 
