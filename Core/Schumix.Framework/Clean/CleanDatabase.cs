@@ -20,6 +20,7 @@
 using System;
 using System.Data;
 using System.Collections.Generic;
+using Schumix.Irc;
 using Schumix.Framework.Config;
 using Schumix.Framework.Extensions;
 using Schumix.Framework.Localization;
@@ -65,11 +66,11 @@ namespace Schumix.Framework.Clean
 				{
 					string name = row["ServerName"].ToString();
 
-					/*if(!IRCConfig.List.ContainsKey(name))
+					if(!ServerList.List.ContainsKey(name))
 					{
 						SchumixBase.DManager.Delete(table, string.Format("ServerName = '{0}'", name));
 						Log.Debug("CleanDatabase", sLConsole.CleanDatabase("Text3"), name, table);
-					}*/
+					}
 				}
 			}
 

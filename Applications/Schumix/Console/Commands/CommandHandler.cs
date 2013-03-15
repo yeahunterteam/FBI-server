@@ -512,7 +512,7 @@ namespace Schumix.Console.Commands
 		/// </summary>
 		protected void HandleChannel()
 		{
-			/*if(Info.Length < 2)
+			if(Info.Length < 2)
 			{
 				Log.Notice("Console", sLManager.GetConsoleCommandText("channel"));
 				return;
@@ -552,13 +552,13 @@ namespace Schumix.Console.Commands
 				{
 					string pass = Info[3];
 					sIrcBase.Networks[_servername].sSender.Join(channel, pass);
-					SchumixBase.DManager.Insert("`channels`(ServerId, ServerName, Channel, Password, Language)", IRCConfig.List[_servername].ServerId, _servername, channel, pass, sLManager.Locale);
+					SchumixBase.DManager.Insert("`channels`(ServerId, ServerName, Channel, Password, Language)", ServerList.List[_servername].ServerId(), _servername, channel, pass, sLManager.Locale);
 					SchumixBase.DManager.Update("channels", "Enabled = 'true'", string.Format("Channel = '{0}' And ServerName = '{1}'", channel, _servername));
 				}
 				else
 				{
 					sIrcBase.Networks[_servername].sSender.Join(channel);
-					SchumixBase.DManager.Insert("`channels`(ServerId, ServerName, Channel, Password, Language)", IRCConfig.List[_servername].ServerId, _servername, channel, string.Empty, sLManager.Locale);
+					SchumixBase.DManager.Insert("`channels`(ServerId, ServerName, Channel, Password, Language)", ServerList.List[_servername].ServerId(), _servername, channel, string.Empty, sLManager.Locale);
 					SchumixBase.DManager.Update("channels", "Enabled = 'true'", string.Format("Channel = '{0}' And ServerName = '{1}'", channel, _servername));
 				}
 
@@ -586,12 +586,6 @@ namespace Schumix.Console.Commands
 				if(!IsChannel(channel))
 				{
 					Log.Error("Console", sLManager.GetConsoleWarningText("NotaChannelHasBeenSet"));
-					return;
-				}
-
-				if(channel == IRCConfig.List[_servername].MasterChannel.ToLower())
-				{
-					Log.Warning("Console", text[0]);
 					return;
 				}
 
@@ -884,7 +878,7 @@ namespace Schumix.Console.Commands
 							Log.Notice("Console", text[2]);
 					}
 				}
-			}*/
+			}
 		}
 
 		/// <summary>
