@@ -25,6 +25,7 @@ using System.Diagnostics;
 using System.Collections.Generic;
 using Schumix.API;
 using Schumix.API.Functions;
+using Schumix.Irc;
 using Schumix.Framework.Clean;
 using Schumix.Framework.Config;
 using Schumix.Framework.Network;
@@ -94,58 +95,14 @@ namespace Schumix.Framework
 				Log.Notice("SchumixBase", sLConsole.SchumixBase("Text3"));
 				sLManager.Locale = LocalizationConfig.Locale;
 
-				/*foreach(var sn in IRCConfig.List)
+				foreach(var sn in ServerList.List)
 				{
-					DManager.Update("channels", string.Format("ServerName = '{0}'", sn.Key), string.Format("ServerId = '{0}'", sn.Value.ServerId));
-					DManager.Update("schumix", string.Format("ServerName = '{0}'", sn.Key), string.Format("ServerId = '{0}'", sn.Value.ServerId));
+					DManager.Update("channels", string.Format("ServerName = '{0}'", sn.Key), string.Format("ServerId = '{0}'", sn.Value.ServerId()));
+					DManager.Update("schumix", string.Format("ServerName = '{0}'", sn.Key), string.Format("ServerId = '{0}'", sn.Value.ServerId()));
 
-					var db1 = DManager.Query("SELECT Id, ServerName FROM channels WHERE ServerId = '{0}'", sn.Value.ServerId);
-					if(!db1.IsNull())
-					{
-						foreach(DataRow row in db1.Rows)
-						{
-							bool ignore = false;
-							int id = Convert.ToInt32(row["Id"].ToString());
-							var db3 = DManager.Query("SELECT Id, Channel FROM channels WHERE ServerName = '{0}' And Channel = '{1}' ORDER BY Id ASC", row["ServerName"].ToString(), IRCConfig.List[row["ServerName"].ToString()].MasterChannel);
-							if(!db3.IsNull())
-							{
-								int id2 = 0;
-								var db4 = DManager.QueryFirstRow("SELECT Id FROM channels WHERE ServerName = '{0}' ORDER BY Id ASC", row["ServerName"].ToString());
-
-								if(!db4.IsNull())
-									id2 = Convert.ToInt32(db4["Id"].ToString());
-
-								foreach(DataRow row2 in db3.Rows)
-								{
-									if(id2 != Convert.ToInt32(row2["Id"].ToString()) && row2["Channel"].ToString() == IRCConfig.List[row["ServerName"].ToString()].MasterChannel)
-									{
-										ignore = true;
-										break;
-									}
-								}
-							}
-								
-							var db2 = DManager.QueryFirstRow("SELECT Id, ServerName, Channel FROM channels WHERE ServerName = '{0}' ORDER BY Id ASC", row["ServerName"].ToString());
-
-							if(!db2.IsNull())
-							{
-								if(id == Convert.ToInt32(db2["Id"].ToString()) && !ignore)
-								{
-									string channel = db2["Channel"].ToString();
-									string servername = db2["ServerName"].ToString();
-									DManager.Update("channels", string.Format("Channel = '{0}'", IRCConfig.List[servername].MasterChannel), string.Format("Channel = '{0}' And ServerName = '{1}'", channel, servername));
-									DManager.Update("channels", string.Format("Password = '{0}'", IRCConfig.List[servername].MasterChannelPassword.Length > 0 ? IRCConfig.List[servername].MasterChannelPassword : string.Empty), string.Format("Channel = '{0}' And ServerName = '{1}'", channel, servername));
-									Log.Notice("SchumixBase", sLConsole.SchumixBase("Text4"), servername, IRCConfig.List[servername].MasterChannel);
-								}
-								else if(id == Convert.ToInt32(db2["Id"].ToString()) && ignore)
-									Log.Warning("SchumixBase", sLConsole.SchumixBase("Text7"));
-							}
-						}
-					}
-
-					NewServerSqlData(sn.Value.ServerId, sn.Key);
-					IsAllSchumixFunction(sn.Value.ServerId, sn.Key);
-					IsAllChannelFunction(sn.Value.ServerId);
+					NewServerSqlData(sn.Value.ServerId(), sn.Key);
+					IsAllSchumixFunction(sn.Value.ServerId(), sn.Key);
+					IsAllChannelFunction(sn.Value.ServerId());
 
 					var db = DManager.Query("SELECT FunctionName, FunctionStatus FROM schumix WHERE ServerName = '{0}'", sn.Key);
 					if(!db.IsNull())
@@ -163,7 +120,7 @@ namespace Schumix.Framework
 					}
 					else
 						Log.Error("SchumixBase", sLConsole.ChannelInfo("Text11"));
-				}*/
+				}
 
 				Log.Debug("SchumixBase", sLConsole.SchumixBase("Text9"));
 				sCleanManager = new CleanManager();
@@ -198,19 +155,15 @@ namespace Schumix.Framework
 			}
 		}
 
-		/*private void NewServerSqlData(int ServerId, string ServerName)
+		private void NewServerSqlData(int ServerId, string ServerName)
 		{
-			var db = DManager.QueryFirstRow("SELECT * FROM channels WHERE ServerId = '{0}'", ServerId);
-			if(db.IsNull())
-				DManager.Insert("`channels`(ServerId, ServerName, Channel, Password, Language)", ServerId, ServerName, IRCConfig.List[ServerName].MasterChannel, IRCConfig.List[ServerName].MasterChannelPassword, sLManager.Locale);
-
-			db = DManager.QueryFirstRow("SELECT * FROM schumix WHERE ServerId = '{0}'", ServerId);
+			var db = DManager.QueryFirstRow("SELECT * FROM schumix WHERE ServerId = '{0}'", ServerId);
 			if(db.IsNull())
 			{
 				foreach(var function in Enum.GetNames(typeof(IFunctions)))
 					DManager.Insert("`schumix`(ServerId, ServerName, FunctionName, FunctionStatus)", ServerId, ServerName, function.ToLower(), On);
 			}
-		}*/
+		}
 
 		private void IsAllSchumixFunction(int ServerId, string ServerName)
 		{

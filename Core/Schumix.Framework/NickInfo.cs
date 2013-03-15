@@ -41,7 +41,7 @@ namespace Schumix.Irc
 
 		public bool IsNickStorage()
 		{
-			return /*_NickStorage.ToLower() == IRCConfig.List[_servername].NickName.ToLower()*/ true;
+			return _NickStorage.ToLower() == ServerList.List[_servername].NickName().ToLower();
 		}
 
 		public bool IsIdentify
@@ -64,62 +64,61 @@ namespace Schumix.Irc
 
 		public string ChangeNick()
 		{
-			/*if(_NickStorage == IRCConfig.List[_servername].NickName)
+			if(_NickStorage == ServerList.List[_servername].NickName())
 			{
-				_NickStorage = IRCConfig.List[_servername].NickName2;
+				_NickStorage = ServerList.List[_servername].NickName2();
 				return _NickStorage;
 			}
-			else if(_NickStorage == IRCConfig.List[_servername].NickName2)
+			else if(_NickStorage == ServerList.List[_servername].NickName2())
 			{
-				_NickStorage = IRCConfig.List[_servername].NickName3;
+				_NickStorage = ServerList.List[_servername].NickName3();
 				return _NickStorage;
 			}
-			else if(_NickStorage == IRCConfig.List[_servername].NickName3)
+			else if(_NickStorage == ServerList.List[_servername].NickName3())
 			{
-				_NickStorage = string.Format("_{0}_", IRCConfig.List[_servername].NickName);
+				_NickStorage = string.Format("_{0}_", ServerList.List[_servername].NickName());
 				return _NickStorage;
 			}
-			else if(_NickStorage == string.Format("_{0}_", IRCConfig.List[_servername].NickName))
+			else if(_NickStorage == string.Format("_{0}_", ServerList.List[_servername].NickName()))
 			{
-				_NickStorage = string.Format("__{0}_", IRCConfig.List[_servername].NickName);
+				_NickStorage = string.Format("__{0}_", ServerList.List[_servername].NickName());
 				return _NickStorage;
 			}
-			else if(_NickStorage == string.Format("__{0}_", IRCConfig.List[_servername].NickName))
+			else if(_NickStorage == string.Format("__{0}_", ServerList.List[_servername].NickName()))
 			{
-				_NickStorage = string.Format("__{0}__", IRCConfig.List[_servername].NickName);
+				_NickStorage = string.Format("__{0}__", ServerList.List[_servername].NickName());
 				return _NickStorage;
 			}
-			else if(_NickStorage == string.Format("__{0}__", IRCConfig.List[_servername].NickName))
+			else if(_NickStorage == string.Format("__{0}__", ServerList.List[_servername].NickName()))
 			{
-				_NickStorage = string.Format("___{0}", IRCConfig.List[_servername].NickName);
+				_NickStorage = string.Format("___{0}", ServerList.List[_servername].NickName());
 				return _NickStorage;
 			}
-			else if(_NickStorage == string.Format("___{0}", IRCConfig.List[_servername].NickName))
+			else if(_NickStorage == string.Format("___{0}", ServerList.List[_servername].NickName()))
 			{
-				_NickStorage = string.Format("___{0}_", IRCConfig.List[_servername].NickName);
+				_NickStorage = string.Format("___{0}_", ServerList.List[_servername].NickName());
 				return _NickStorage;
 			}
-			else if(_NickStorage == string.Format("___{0}_", IRCConfig.List[_servername].NickName))
+			else if(_NickStorage == string.Format("___{0}_", ServerList.List[_servername].NickName()))
 			{
-				_NickStorage = string.Format("___{0}__", IRCConfig.List[_servername].NickName);
+				_NickStorage = string.Format("___{0}__", ServerList.List[_servername].NickName());
 				return _NickStorage;
 			}
-			else if(_NickStorage == string.Format("___{0}__", IRCConfig.List[_servername].NickName))
+			else if(_NickStorage == string.Format("___{0}__", ServerList.List[_servername].NickName()))
 			{
-				_NickStorage = string.Format("___{0}___", IRCConfig.List[_servername].NickName);
+				_NickStorage = string.Format("___{0}___", ServerList.List[_servername].NickName());
 				return _NickStorage;
 			}
-			else if(_NickStorage == string.Format("___{0}___", IRCConfig.List[_servername].NickName))
+			else if(_NickStorage == string.Format("___{0}___", ServerList.List[_servername].NickName()))
 			{
-				_NickStorage = IRCConfig.List[_servername].NickName;
+				_NickStorage = ServerList.List[_servername].NickName();
 				return _NickStorage;
 			}
 			else
 			{
-				_NickStorage = IRCConfig.List[_servername].NickName;
+				_NickStorage = ServerList.List[_servername].NickName();
 				return _NickStorage;
-			}*/
-			return _NickStorage;
+			}
 		}
 
 		public void ChangeNick(string newnick)

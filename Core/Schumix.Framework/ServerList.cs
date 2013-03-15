@@ -18,21 +18,25 @@
  */
 
 using System;
-using Schumix.Framework.Localization;
+using System.Collections.Generic;
 
-namespace Schumix.Framework.Config
+namespace Schumix.Irc
 {
-	public sealed class IRCConfig
+	public sealed class ServerList
 	{
-		private readonly LocalizationConsole sLConsole = Singleton<LocalizationConsole>.Instance;
-		public static int MessageSending { get; private set; }
-		public static string MessageType { get; private set; }
+		public static Dictionary<string, IrcServer> List { get; private set; }
 
-		public IRCConfig(int messagesending, string messagetype)
+		static ServerList()
 		{
-			MessageSending        = messagesending;
-			MessageType           = messagetype;
-			Log.Notice("IRCConfig", sLConsole.IRCConfig("Text"));
+			List = new Dictionary<string, IrcServer>();
+
+			var s = new IrcServer();
+			List.Add("default", s);
+		}
+
+		public static void NewServer(string ServerName)
+		{
+
 		}
 	}
 }

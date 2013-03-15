@@ -54,7 +54,7 @@ namespace Schumix
 				Log.Notice("SchumixBot", sLConsole.SchumixBot("Text"));
 				Log.Debug("SchumixBot", sLConsole.SchumixBot("Text2"));
 
-				/*foreach(var sn in IRCConfig.List)
+				foreach(var sn in ServerList.List)
 				{
 					if(!e)
 					{
@@ -62,21 +62,21 @@ namespace Schumix
 						e = true;
 					}
 
-					sIrcBase.NewServer(sn.Key, sn.Value.ServerId, sn.Value.Server, sn.Value.Port);
+					sIrcBase.NewServer(sn.Key, sn.Value.ServerId(), sn.Value.Server(), sn.Value.Port());
 				}
 
 				sSchumixBase = new SchumixBase();
 
 				Task.Factory.StartNew(() =>
 				{
-					if(IRCConfig.List.Count == 1)
+					if(ServerList.List.Count == 1)
 					{
 						sIrcBase.Connect(eserver);
 						return;
 					}
 
 					int i = 0;
-					foreach(var sn in IRCConfig.List)
+					foreach(var sn in ServerList.List)
 					{
 						sIrcBase.Connect(sn.Key);
 
@@ -89,14 +89,14 @@ namespace Schumix
 							Thread.Sleep(1000);
 						}
 					}
-				});*/
+				});
 
 				Log.Debug("SchumixBot", sLConsole.SchumixBot("Text3"));
 				new Console.Console(eserver);
 			}
 			catch(Exception e)
 			{
-				Log.Error("SchumixBot", sLConsole.Exception("Error"), e.Message);
+				Log.Error("SchumixBot", sLConsole.Exception("Error"), e/*.Message*/);
 			}
 		}
 

@@ -48,8 +48,8 @@ namespace Schumix.Irc
 			{
 				var nw = new Network(ServerName.ToLower(), ServerId, Host, Port);
 
-				//if(IRCConfig.List[ServerName].Ssl)
-				//	nw.SetConnectionType(ConnectionType.Ssl);
+				if(ServerList.List[ServerName].Ssl())
+					nw.SetConnectionType(ConnectionType.Ssl);
 
 				_networks.Add(ServerName, nw);
 			}

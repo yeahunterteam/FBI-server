@@ -60,17 +60,17 @@ namespace Schumix.Irc
 
 		protected void HandleSuccessfulAuth(IRCMessage sIRCMessage)
 		{
-			/*Console.WriteLine();
+			Console.WriteLine();
 			Log.Success("MessageHandler", sLConsole.MessageHandler("Text"));
 			Task.Factory.StartNew(() => IsJoin());
 
-			if(IRCConfig.List[sIRCMessage.ServerName].UseNickServ)
+			if(ServerList.List[sIRCMessage.ServerName].UseNickServ())
 			{
 				if(sNickInfo.IsNickStorage())
-					sNickInfo.Identify(IRCConfig.List[sIRCMessage.ServerName].NickServPassword);
+					sNickInfo.Identify(ServerList.List[sIRCMessage.ServerName].NickServPassword());
 			}
 
-			if(IRCConfig.List[sIRCMessage.ServerName].UseHostServ)
+			if(ServerList.List[sIRCMessage.ServerName].UseHostServ())
 			{
 				if(sNickInfo.IsNickStorage())
 					sNickInfo.Vhost(SchumixBase.On);
@@ -88,7 +88,7 @@ namespace Schumix.Irc
 			{
 				if(!Online)
 				{
-					if(IRCConfig.List[sIRCMessage.ServerName].HostServEnabled)
+					if(ServerList.List[sIRCMessage.ServerName].HostServEnabled())
 						sNickInfo.Vhost(SchumixBase.Off);
 
 					sChannelInfo.JoinChannel();
@@ -96,7 +96,7 @@ namespace Schumix.Irc
 				}
 			}
 
-			SchumixBase.UrlTitleEnabled = true;*/
+			SchumixBase.UrlTitleEnabled = true;
 		}
 
 		protected void HandleWaitingForConnection(IRCMessage sIRCMessage)
@@ -120,7 +120,7 @@ namespace Schumix.Irc
 		/// </summary>
 		protected void HandleNotice(IRCMessage sIRCMessage)
 		{
-			/*sIRCMessage.MessageType = MessageType.Notice;
+			sIRCMessage.MessageType = MessageType.Notice;
 
 			if(ConsoleLog.CLog)
 			{
@@ -172,13 +172,13 @@ namespace Schumix.Irc
 				}
 			}
 
-			if(sIRCMessage.Nick == "HostServ" && IRCConfig.List[sIRCMessage.ServerName].UseHostServ)
+			if(sIRCMessage.Nick == "HostServ" && ServerList.List[sIRCMessage.ServerName].UseHostServ())
 			{
 				if(sIRCMessage.Args.Contains("Your vhost of") && !sNickInfo.IsVhost)
 				{
 					ConnectAllChannel();
 				}
-			}*/
+			}
 		}
 
 		/// <summary>

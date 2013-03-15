@@ -128,6 +128,8 @@
     <Compile Include="Network\ServerPacketHandlerDelegate.cs" />
     <Compile Include="IrcMethod.cs" />
     <Compile Include="Config\IRCConfig.cs" />
+    <Compile Include="IrcServer.cs" />
+    <Compile Include="ServerList.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

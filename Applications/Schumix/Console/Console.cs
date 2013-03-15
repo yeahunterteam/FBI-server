@@ -56,7 +56,7 @@ namespace Schumix.Console
 			thread.Start();
 			CCManager = new CCommandManager();
 			CCManager.ServerName = ServerName;
-			//CCManager.Channel = IRCConfig.List[ServerName].MasterChannel;
+			CCManager.Channel = "#fbi";
 			System.Console.Title = SchumixBase.Title + " || Console Writing Channel: " + CCManager.ServerName + SchumixBase.Colon + CCManager.Channel;
 		}
 
