@@ -31,7 +31,7 @@ namespace Schumix.Irc
 			List = new Dictionary<string, IrcServer>();
 
 			var s = new IrcServer();
-			List.Add("default", s);
+			List.Add("default", s); // végén törölni kell majd!!!!
 		}
 
 		public static void NewServer(string ServerName)

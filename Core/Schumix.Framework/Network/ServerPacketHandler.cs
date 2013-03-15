@@ -138,7 +138,7 @@ namespace Schumix.Framework.Network
 
 		private void CommitHandler(SchumixPacket pck, NetworkStream stream, string hst, int bck)
 		{
-			/*string project = pck.Read<string>();
+			string project = pck.Read<string>();
 			string refname = pck.Read<string>();
 			string rev = pck.Read<string>().ToLower();
 			string author = pck.Read<string>();
@@ -168,7 +168,7 @@ namespace Schumix.Framework.Network
 						if(!sChannelInfo.CList.ContainsKey(cname))
 						{
 							sSender.Join(cname, cpassword);
-							SchumixBase.DManager.Insert("`channels`(ServerId, ServerName, Channel, Password, Language)", IRCConfig.List[ircserver].ServerId, ircserver, cname, cpassword, sLManager.Locale);
+							SchumixBase.DManager.Insert("`channels`(ServerId, ServerName, Channel, Password, Language)", ServerList.List[ircserver].ServerId(), ircserver, cname, cpassword, sLManager.Locale);
 							SchumixBase.DManager.Update("channels", "Enabled = 'true'", string.Format("Channel = '{0}' And ServerName = '{1}'", cname, ircserver));
 						}
 					}
@@ -177,7 +177,7 @@ namespace Schumix.Framework.Network
 						if(!sChannelInfo.CList.ContainsKey(cname))
 						{
 							sSender.Join(cname);
-							SchumixBase.DManager.Insert("`channels`(ServerId, ServerName, Channel, Password, Language)", IRCConfig.List[ircserver].ServerId, ircserver, cname, string.Empty, sLManager.Locale);
+							SchumixBase.DManager.Insert("`channels`(ServerId, ServerName, Channel, Password, Language)", ServerList.List[ircserver].ServerId(), ircserver, cname, string.Empty, sLManager.Locale);
 							SchumixBase.DManager.Update("channels", "Enabled = 'true'", string.Format("Channel = '{0}' And ServerName = '{1}'", cname, ircserver));
 						}
 					}
@@ -187,7 +187,7 @@ namespace Schumix.Framework.Network
 					if(!sChannelInfo.CList.ContainsKey(chan))
 					{
 						sSender.Join(chan);
-						SchumixBase.DManager.Insert("`channels`(ServerId, ServerName, Channel, Password, Language)", IRCConfig.List[ircserver].ServerId, ircserver, chan, string.Empty, sLManager.Locale);
+						SchumixBase.DManager.Insert("`channels`(ServerId, ServerName, Channel, Password, Language)", ServerList.List[ircserver].ServerId(), ircserver, chan, string.Empty, sLManager.Locale);
 						SchumixBase.DManager.Update("channels", "Enabled = 'true'", string.Format("Channel = '{0}' And ServerName = '{1}'", chan, ircserver));
 					}
 				}
@@ -198,12 +198,12 @@ namespace Schumix.Framework.Network
 				sSendMessage.SendCMPrivmsg(chan, "[3{0}] {1} pushed new commit to 7{2}: 02{3}", project, author, refname, url);
 				sSendMessage.SendCMPrivmsg(chan, "3{0}15/7{1} 10{2} {3}: {4}", project, refname, rev, author, message);
 				Thread.Sleep(1000);
-			}*/
+			}
 		}
 
 		private void AddChannelHandler(SchumixPacket pck, NetworkStream stream, string hst, int bck)
 		{
-			/*string channels = pck.Read<string>().ToLower();
+			string channels = pck.Read<string>().ToLower();
 			string ircserver = pck.Read<string>().ToLower();
 			
 			if(!sIrcBase.Networks.ContainsKey(ircserver))
@@ -224,7 +224,7 @@ namespace Schumix.Framework.Network
 						if(!sChannelInfo.CList.ContainsKey(cname))
 						{
 							sSender.Join(cname, cpassword);
-							SchumixBase.DManager.Insert("`channels`(ServerId, ServerName, Channel, Password, Language)", IRCConfig.List[ircserver].ServerId, ircserver, cname, cpassword, sLManager.Locale);
+							SchumixBase.DManager.Insert("`channels`(ServerId, ServerName, Channel, Password, Language)", ServerList.List[ircserver].ServerId(), ircserver, cname, cpassword, sLManager.Locale);
 							SchumixBase.DManager.Update("channels", "Enabled = 'true'", string.Format("Channel = '{0}' And ServerName = '{1}'", cname, ircserver));
 						}
 					}
@@ -233,7 +233,7 @@ namespace Schumix.Framework.Network
 						if(!sChannelInfo.CList.ContainsKey(cname))
 						{
 							sSender.Join(cname);
-							SchumixBase.DManager.Insert("`channels`(ServerId, ServerName, Channel, Password, Language)", IRCConfig.List[ircserver].ServerId, ircserver, cname, string.Empty, sLManager.Locale);
+							SchumixBase.DManager.Insert("`channels`(ServerId, ServerName, Channel, Password, Language)", ServerList.List[ircserver].ServerId(), ircserver, cname, string.Empty, sLManager.Locale);
 							SchumixBase.DManager.Update("channels", "Enabled = 'true'", string.Format("Channel = '{0}' And ServerName = '{1}'", cname, ircserver));
 						}
 					}
@@ -243,7 +243,7 @@ namespace Schumix.Framework.Network
 					if(!sChannelInfo.CList.ContainsKey(chan))
 					{
 						sSender.Join(chan);
-						SchumixBase.DManager.Insert("`channels`(ServerId, ServerName, Channel, Password, Language)", IRCConfig.List[ircserver].ServerId, ircserver, chan, string.Empty, sLManager.Locale);
+						SchumixBase.DManager.Insert("`channels`(ServerId, ServerName, Channel, Password, Language)", ServerList.List[ircserver].ServerId(), ircserver, chan, string.Empty, sLManager.Locale);
 						SchumixBase.DManager.Update("channels", "Enabled = 'true'", string.Format("Channel = '{0}' And ServerName = '{1}'", chan, ircserver));
 					}
 				}
@@ -251,12 +251,12 @@ namespace Schumix.Framework.Network
 				sChannelInfo.ChannelListReload();
 				sChannelInfo.ChannelFunctionsReload();
 				Thread.Sleep(1000);
-			}*/
+			}
 		}
 
 		private void RemoveChannelHandler(SchumixPacket pck, NetworkStream stream, string hst, int bck)
 		{
-			/*string channels = pck.Read<string>().ToLower();
+			string channels = pck.Read<string>().ToLower();
 			string ircserver = pck.Read<string>().ToLower();
 			
 			if(!sIrcBase.Networks.ContainsKey(ircserver))
@@ -271,12 +271,6 @@ namespace Schumix.Framework.Network
 				{
 					string cname = chan.Substring(0, chan.IndexOf(SchumixBase.Colon));
 
-					if(cname == IRCConfig.List[ircserver].MasterChannel.ToLower())
-					{
-						Log.Warning("PacketHandler", "Mester csatornát akarták kitörölni. A törlés megszakítva.");
-						continue;
-					}
-
 					if(!sChannelInfo.CList.ContainsKey(cname))
 					{
 						sSender.Part(cname);
@@ -285,12 +279,6 @@ namespace Schumix.Framework.Network
 				}
 				else
 				{
-					if(chan == IRCConfig.List[ircserver].MasterChannel.ToLower())
-					{
-						Log.Warning("PacketHandler", "Mester csatornát akarták kitörölni. A törlés megszakítva.");
-						continue;
-					}
-
 					if(!sChannelInfo.CList.ContainsKey(chan))
 					{
 						sSender.Part(chan);
@@ -301,7 +289,7 @@ namespace Schumix.Framework.Network
 				sChannelInfo.ChannelListReload();
 				sChannelInfo.ChannelFunctionsReload();
 				Thread.Sleep(1000);
-			}*/
+			}
 		}
 
 		public void SendPacketBack(SchumixPacket packet, NetworkStream stream, string hst, int backport)
