@@ -7,4 +7,5 @@ DROP TABLE IF EXISTS
 `localized_console_command_help`,
 `localized_console_warning`,
 `schumix`,
+`servers`,
 `uptime`;

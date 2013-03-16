@@ -18,6 +18,7 @@
  */
 
 using System;
+using System.Data;
 using System.Threading;
 using System.Threading.Tasks;
 using Schumix.API;
@@ -25,6 +26,7 @@ using Schumix.Irc;
 using Schumix.Framework;
 using Schumix.Framework.Config;
 using Schumix.Framework.Database;
+using Schumix.Framework.Extensions;
 using Schumix.Framework.Localization;
 
 namespace Schumix
@@ -53,6 +55,19 @@ namespace Schumix
 				string eserver = string.Empty;
 				Log.Notice("SchumixBot", sLConsole.SchumixBot("Text"));
 				Log.Debug("SchumixBot", sLConsole.SchumixBot("Text2"));
+				sSchumixBase = new SchumixBase();
+
+				var db = SchumixBase.DManager.Query("SELECT ServerName FROM servers");
+				if(!db.IsNull())
+				{
+					foreach(DataRow row in db.Rows)
+					{
+						string name = row["ServerName"].ToString();
+						ServerList.List.Add(name, new IrcServer(name));
+					}
+				}
+				else
+					Log.Warning("SchumixBot", "Nem áll rendelkezésre irc szerver amit be lehetne tölteni!");
 
 				foreach(var sn in ServerList.List)
 				{
@@ -64,8 +79,6 @@ namespace Schumix
 
 					sIrcBase.NewServer(sn.Key, sn.Value.ServerId(), sn.Value.Server(), sn.Value.Port());
 				}
-
-				sSchumixBase = new SchumixBase();
 
 				Task.Factory.StartNew(() =>
 				{

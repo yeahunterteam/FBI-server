@@ -5,6 +5,11 @@
 -- ----------------------------
 INSERT INTO `channels` VALUES ("1", "1", "default", ",log:on,rejoin:on,commands:on", "#schumix2", "", "false", "", "enUS");
 
+-- ----------------------------
+-- Records of servers
+-- ----------------------------
+INSERT INTO `servers` VALUES ('1', '1', 'yeahunter', 'irc.yeahunter.hu', '6667', 'false', 'FBI', '_FBI', '__FBI', 'FBI', 'FBI IRC Bot', 'false', '', 'false', 'false');
+
 -- huHU
 INSERT INTO `localized_console_command` (`Language`, `Command`, `Text`) VALUES ("huHU", "consolelog", "Console logolás bekapcsolva.\nConsole logolás kikapcsolva.");
 INSERT INTO `localized_console_command` (`Language`, `Command`, `Text`) VALUES ("huHU", "sys", "Verzió: {0}\nPlatform: {0}\nOSVerzió: {0}\nProgramnyelv: c#\nMemória használat: {0} MB\nFutó szálak: {0}\nMűködési idő: {0}");

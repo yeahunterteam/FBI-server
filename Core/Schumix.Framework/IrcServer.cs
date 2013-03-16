@@ -18,22 +18,33 @@
  */
 
 using System;
+using Schumix.Framework;
+using Schumix.Framework.Extensions;
 
 namespace Schumix.Irc
 {
 	public class IrcServer
 	{
 		private readonly object Lock = new object();
+		private string _servername;
 
-		public IrcServer()
+		public IrcServer(string ServerName)
 		{
+			_servername = ServerName.ToLower();
 		}
 
 		public int ServerId()
 		{
 			lock(Lock)
 			{
-				return 1;
+				var db = SchumixBase.DManager.QueryFirstRow("SELECT ServerId FROM servers WHERE ServerName = '{0}'", _servername);
+				if(!db.IsNull())
+				{
+					string s = db["ServerId"].ToString();
+					return s.IsNumber() ? s.ToNumber().ToInt() : -1;
+				}
+				else
+					return -1;
 			}
 		}
 
@@ -41,7 +52,7 @@ namespace Schumix.Irc
 		{
 			lock(Lock)
 			{
-				return "default";
+				return _servername;
 			}
 		}
 
@@ -49,7 +60,11 @@ namespace Schumix.Irc
 		{
 			lock(Lock)
 			{
-				return "irc.yeahunter.hu";
+				var db = SchumixBase.DManager.QueryFirstRow("SELECT Server FROM servers WHERE ServerName = '{0}'", _servername);
+				if(!db.IsNull())
+					return db["Server"].ToString();
+				else
+					return "localhost";
 			}
 		}
 
@@ -57,7 +72,14 @@ namespace Schumix.Irc
 		{
 			lock(Lock)
 			{
-				return 6667;
+				var db = SchumixBase.DManager.QueryFirstRow("SELECT Port FROM servers WHERE ServerName = '{0}'", _servername);
+				if(!db.IsNull())
+				{
+					string s = db["Port"].ToString();
+					return s.IsNumber() ? s.ToNumber().ToInt() : -1;
+				}
+				else
+					return -1;
 			}
 		}
 
@@ -65,7 +87,14 @@ namespace Schumix.Irc
 		{
 			lock(Lock)
 			{
-				return false;
+				var db = SchumixBase.DManager.QueryFirstRow("SELECT SslType FROM servers WHERE ServerName = '{0}'", _servername);
+				if(!db.IsNull())
+				{
+					string s = db["SslType"].ToString();
+					return Convert.ToBoolean(s);
+				}
+				else
+					return false;
 			}
 		}
 
@@ -73,7 +102,11 @@ namespace Schumix.Irc
 		{
 			lock(Lock)
 			{
-				return "fbi-teszt";
+				var db = SchumixBase.DManager.QueryFirstRow("SELECT NickName FROM servers WHERE ServerName = '{0}'", _servername);
+				if(!db.IsNull())
+					return db["NickName"].ToString();
+				else
+					return "FBI";
 			}
 		}
 
@@ -81,7 +114,11 @@ namespace Schumix.Irc
 		{
 			lock(Lock)
 			{
-				return string.Empty;
+				var db = SchumixBase.DManager.QueryFirstRow("SELECT NickName2 FROM servers WHERE ServerName = '{0}'", _servername);
+				if(!db.IsNull())
+					return db["NickName2"].ToString();
+				else
+					return "_FBI";
 			}
 		}
 
@@ -89,7 +126,11 @@ namespace Schumix.Irc
 		{
 			lock(Lock)
 			{
-				return string.Empty;
+				var db = SchumixBase.DManager.QueryFirstRow("SELECT NickName3 FROM servers WHERE ServerName = '{0}'", _servername);
+				if(!db.IsNull())
+					return db["NickName3"].ToString();
+				else
+					return "__FBI";
 			}
 		}
 
@@ -97,7 +138,11 @@ namespace Schumix.Irc
 		{
 			lock(Lock)
 			{
-				return "FBI";
+				var db = SchumixBase.DManager.QueryFirstRow("SELECT UserName FROM servers WHERE ServerName = '{0}'", _servername);
+				if(!db.IsNull())
+					return db["UserName"].ToString();
+				else
+					return "FBI";
 			}
 		}
 
@@ -105,7 +150,11 @@ namespace Schumix.Irc
 		{
 			lock(Lock)
 			{
-				return "FBI";
+				var db = SchumixBase.DManager.QueryFirstRow("SELECT UserInfo FROM servers WHERE ServerName = '{0}'", _servername);
+				if(!db.IsNull())
+					return db["UserInfo"].ToString();
+				else
+					return "FBI IRC Bot";
 			}
 		}
 
@@ -113,7 +162,14 @@ namespace Schumix.Irc
 		{
 			lock(Lock)
 			{
-				return false;
+				var db = SchumixBase.DManager.QueryFirstRow("SELECT UseNickServ FROM servers WHERE ServerName = '{0}'", _servername);
+				if(!db.IsNull())
+				{
+					string s = db["UseNickServ"].ToString();
+					return Convert.ToBoolean(s);
+				}
+				else
+					return false;
 			}
 		}
 
@@ -121,7 +177,11 @@ namespace Schumix.Irc
 		{
 			lock(Lock)
 			{
-				return string.Empty;
+				var db = SchumixBase.DManager.QueryFirstRow("SELECT NickServPassword FROM servers WHERE ServerName = '{0}'", _servername);
+				if(!db.IsNull())
+					return db["NickServPassword"].ToString();
+				else
+					return string.Empty;
 			}
 		}
 
@@ -129,7 +189,17 @@ namespace Schumix.Irc
 		{
 			lock(Lock)
 			{
-				return false;
+				lock(Lock)
+				{
+					var db = SchumixBase.DManager.QueryFirstRow("SELECT UseHostServ FROM servers WHERE ServerName = '{0}'", _servername);
+					if(!db.IsNull())
+					{
+						string s = db["UseHostServ"].ToString();
+						return Convert.ToBoolean(s);
+					}
+					else
+						return false;
+				}
 			}
 		}
 
@@ -137,7 +207,17 @@ namespace Schumix.Irc
 		{
 			lock(Lock)
 			{
-				return false;
+				lock(Lock)
+				{
+					var db = SchumixBase.DManager.QueryFirstRow("SELECT HostServEnabled FROM servers WHERE ServerName = '{0}'", _servername);
+					if(!db.IsNull())
+					{
+						string s = db["HostServEnabled"].ToString();
+						return Convert.ToBoolean(s);
+					}
+					else
+						return false;
+				}
 			}
 		}
 	}
