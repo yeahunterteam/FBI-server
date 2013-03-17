@@ -3,7 +3,7 @@
 -- ----------------------------
 -- Records of channels
 -- ----------------------------
-INSERT INTO `channels` VALUES ("1", "1", "default", ",log:on,rejoin:on,commands:on", "#schumix2", "", "false", "", "enUS");
+INSERT INTO `channels` VALUES ("1", "1", "default", ",log:on,rejoin:on,commands:on", "#fbi", "", "false", "", "enUS");
 
 -- ----------------------------
 -- Records of servers
@@ -219,9 +219,9 @@ INSERT INTO `localized_console_warning` (`Language`, `Command`, `Text`) VALUES (
 INSERT INTO `localized_console_warning` (`Language`, `Command`, `Text`) VALUES ("enUS", "ThereIsNoSuchAnAddon", "There is no such an addon!");
 
 -- ----------------------------
--- Records of schumix
+-- Records of fbi
 -- ----------------------------
-INSERT INTO `schumix` VALUES ("1", "1", "default", "log", "on");
-INSERT INTO `schumix` VALUES ("2", "1", "default", "rejoin", "on");
-INSERT INTO `schumix` VALUES ("3", "1", "default", "commands", "on");
-INSERT INTO `schumix` VALUES ("4", "1", "default", "reconnect", "on");
+INSERT INTO `fbi` VALUES ("1", "1", "default", "log", "on");
+INSERT INTO `fbi` VALUES ("2", "1", "default", "rejoin", "on");
+INSERT INTO `fbi` VALUES ("3", "1", "default", "commands", "on");
+INSERT INTO `fbi` VALUES ("4", "1", "default", "reconnect", "on");

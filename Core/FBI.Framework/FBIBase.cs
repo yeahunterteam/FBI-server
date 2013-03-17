@@ -98,13 +98,13 @@ namespace FBI.Framework
 				foreach(var sn in ServerList.List)
 				{
 					DManager.Update("channels", string.Format("ServerName = '{0}'", sn.Key), string.Format("ServerId = '{0}'", sn.Value.ServerId()));
-					DManager.Update("FBI", string.Format("ServerName = '{0}'", sn.Key), string.Format("ServerId = '{0}'", sn.Value.ServerId()));
+					DManager.Update("fbi", string.Format("ServerName = '{0}'", sn.Key), string.Format("ServerId = '{0}'", sn.Value.ServerId()));
 
 					NewServerSqlData(sn.Value.ServerId(), sn.Key);
 					IsAllFBIFunction(sn.Value.ServerId(), sn.Key);
 					IsAllChannelFunction(sn.Value.ServerId());
 
-					var db = DManager.Query("SELECT FunctionName, FunctionStatus FROM FBI WHERE ServerName = '{0}'", sn.Key);
+					var db = DManager.Query("SELECT FunctionName, FunctionStatus FROM fbi WHERE ServerName = '{0}'", sn.Key);
 					if(!db.IsNull())
 					{
 						var list = new Dictionary<string, string>();
@@ -169,7 +169,7 @@ namespace FBI.Framework
 		{
 			foreach(var function in Enum.GetNames(typeof(IFunctions)))
 			{
-				var db = DManager.QueryFirstRow("SELECT * FROM FBI WHERE ServerId = '{0}' And FunctionName = '{1}'", ServerId, function.ToLower());
+				var db = DManager.QueryFirstRow("SELECT * FROM fbi WHERE ServerId = '{0}' And FunctionName = '{1}'", ServerId, function.ToLower());
 				if(db.IsNull())
 					DManager.Insert("`FBI`(ServerId, ServerName, FunctionName, FunctionStatus)", ServerId, ServerName, function.ToLower(), On);
 			}

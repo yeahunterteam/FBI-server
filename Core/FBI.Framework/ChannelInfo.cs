@@ -164,7 +164,7 @@ namespace FBI.Irc
 		public void FunctionsReload()
 		{
 			IFunctionsClass.ServerList[_servername].Functions.Clear();
-			var db = FBIBase.DManager.Query("SELECT FunctionName, FunctionStatus FROM FBI WHERE ServerName = '{0}'", _servername);
+			var db = FBIBase.DManager.Query("SELECT FunctionName, FunctionStatus FROM fbi WHERE ServerName = '{0}'", _servername);
 			if(!db.IsNull())
 			{
 				foreach(DataRow row in db.Rows)
@@ -250,7 +250,7 @@ namespace FBI.Irc
 
 		public string FunctionsInfo()
 		{
-			var db = FBIBase.DManager.Query("SELECT FunctionName, FunctionStatus FROM FBI WHERE ServerName = '{0}'", _servername);
+			var db = FBIBase.DManager.Query("SELECT FunctionName, FunctionStatus FROM fbi WHERE ServerName = '{0}'", _servername);
 			if(!db.IsNull())
 			{
 				string on = string.Empty, off = string.Empty;

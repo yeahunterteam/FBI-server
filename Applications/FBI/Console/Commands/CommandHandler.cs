@@ -281,7 +281,7 @@ namespace FBI.Console.Commands
 							{
 								if(!sIrcBase.Networks[_servername].sChannelInfo.FSelect(Info[i]) && status == FBIBase.On)
 								{
-									FBIBase.DManager.Update("FBI", "FunctionStatus = 'on'", string.Format("FunctionName = '{0}' And ServerName = '{1}'", Info[i].ToLower(), _servername));
+									FBIBase.DManager.Update("fbi", "FunctionStatus = 'on'", string.Format("FunctionName = '{0}' And ServerName = '{1}'", Info[i].ToLower(), _servername));
 									sIrcBase.Networks[_servername].sChannelInfo.FunctionsReload();
 								}
 							}
@@ -331,7 +331,7 @@ namespace FBI.Console.Commands
 						{
 							if(!sIrcBase.Networks[_servername].sChannelInfo.FSelect(Info[4]) && status == FBIBase.On)
 							{
-								FBIBase.DManager.Update("FBI", "FunctionStatus = 'on'", string.Format("FunctionName = '{0}' And ServerName = '{1}'", Info[4].ToLower(), _servername));
+								FBIBase.DManager.Update("fbi", "FunctionStatus = 'on'", string.Format("FunctionName = '{0}' And ServerName = '{1}'", Info[4].ToLower(), _servername));
 								sIrcBase.Networks[_servername].sChannelInfo.FunctionsReload();
 							}
 						}
@@ -453,7 +453,7 @@ namespace FBI.Console.Commands
 							}
 
 							args += ", " + Info[i].ToLower();
-							FBIBase.DManager.Update("FBI", string.Format("FunctionStatus = '{0}'", Info[1].ToLower()), string.Format("FunctionName = '{0}' And ServerName = '{1}'", Info[i].ToLower(), _servername));
+							FBIBase.DManager.Update("fbi", string.Format("FunctionStatus = '{0}'", Info[1].ToLower()), string.Format("FunctionName = '{0}' And ServerName = '{1}'", Info[i].ToLower(), _servername));
 							sIrcBase.Networks[_servername].sChannelInfo.FunctionsReload();
 						}
 
@@ -498,7 +498,7 @@ namespace FBI.Console.Commands
 						else
 							Log.Notice("Console", text[1], Info[2].ToLower());
 
-						FBIBase.DManager.Update("FBI", string.Format("FunctionStatus = '{0}'", Info[1].ToLower()), string.Format("FunctionName = '{0}' And ServerName = '{1}'", Info[2].ToLower(), _servername));
+						FBIBase.DManager.Update("fbi", string.Format("FunctionStatus = '{0}'", Info[1].ToLower()), string.Format("FunctionName = '{0}' And ServerName = '{1}'", Info[2].ToLower(), _servername));
 						sIrcBase.Networks[_servername].sChannelInfo.FunctionsReload();
 					}
 				}

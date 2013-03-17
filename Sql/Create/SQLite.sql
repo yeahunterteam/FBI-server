@@ -48,9 +48,9 @@ Text TEXT
 );
 
 -- ----------------------------
--- Table structure for "schumix"
+-- Table structure for "fbi"
 -- ----------------------------
-CREATE TABLE "schumix" (
+CREATE TABLE "fbi" (
 Id INTEGER PRIMARY KEY AUTOINCREMENT,
 ServerId INTEGER DEFAULT 1,
 ServerName VARCHAR(40),

@@ -6,6 +6,6 @@ DROP TABLE IF EXISTS
 `localized_console_command`,
 `localized_console_command_help`,
 `localized_console_warning`,
-`schumix`,
+`fbi`,
 `servers`,
 `uptime`;

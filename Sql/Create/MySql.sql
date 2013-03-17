@@ -52,9 +52,9 @@ CREATE TABLE `localized_console_warning` (
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 -- ----------------------------
--- Table structure for schumix
+-- Table structure for fbi
 -- ----------------------------
-CREATE TABLE `schumix` (
+CREATE TABLE `fbi` (
   `Id` int(10) unsigned NOT NULL auto_increment,
   `ServerId` INT(10) NOT NULL DEFAULT '1',
   `ServerName` varchar(40) NOT NULL default '',
