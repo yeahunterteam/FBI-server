@@ -21,7 +21,7 @@ using System;
 using FBI.Framework;
 using FBI.Framework.Extensions;
 
-namespace FBI.Irc
+namespace FBI.Framework
 {
 	public class IrcServer
 	{

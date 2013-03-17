@@ -20,7 +20,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace FBI.Irc
+namespace FBI.Framework
 {
 	public sealed class ServerList
 	{

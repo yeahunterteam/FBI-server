@@ -138,7 +138,6 @@ FILES = \
 	Runtime.cs \
 	CrashDumper.cs \
 	PlatformType.cs \
-	Log.cs \
 	Config/Consts.cs \
 	Config/FBIConfig.cs \
 	Config/MySqlConfig.cs \
@@ -157,25 +156,26 @@ FILES = \
 	Clean/CleanManager.cs \
 	Clean/CleanConfig.cs \
 	Clean/CleanDatabase.cs \
-	LogType.cs \
 	Sender/Sender.cs \
 	Sender/SendMessage.cs \
-	ChannelInfo.cs \
-	ConnectionType.cs \
-	IrcBase.cs \
-	MessageHandler.cs \
-	Network.cs \
-	NickInfo.cs \
-	PublicMessageHandler.cs \
-	ReplyCode.cs \
 	Config/CleanConfig.cs \
 	Network/ServerListener.cs \
 	Network/ServerPacketHandler.cs \
 	Network/ServerPacketHandlerDelegate.cs \
-	IrcMethod.cs \
 	Config/IRCConfig.cs \
 	IrcServer.cs \
-	ServerList.cs 
+	ServerList.cs \
+	Log/Log.cs \
+	Log/LogType.cs \
+	Irc/ChannelInfo.cs \
+	Irc/ConnectionType.cs \
+	Irc/IrcBase.cs \
+	Irc/IrcMethod.cs \
+	Irc/MessageHandler.cs \
+	Irc/Network.cs \
+	Irc/NickInfo.cs \
+	Irc/PublicMessageHandler.cs \
+	Irc/ReplyCode.cs 
 
 DATA_FILES = 
 
