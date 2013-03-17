@@ -95,6 +95,18 @@ namespace FBI.Framework
 				Log.Notice("FBIBase", sLConsole.FBIBase("Text3"));
 				sLManager.Locale = LocalizationConfig.Locale;
 
+				var db0 = FBIBase.DManager.Query("SELECT ServerName FROM servers");
+				if(!db0.IsNull())
+				{
+					foreach(DataRow row in db0.Rows)
+					{
+						string name = row["ServerName"].ToString();
+						ServerList.List.Add(name, new IrcServer(name));
+					}
+				}
+				else
+					Log.Warning("FBIBase", "Nem áll rendelkezésre irc szerver amit be lehetne tölteni!");
+
 				foreach(var sn in ServerList.List)
 				{
 					DManager.Update("channels", string.Format("ServerName = '{0}'", sn.Key), string.Format("ServerId = '{0}'", sn.Value.ServerId()));
@@ -157,11 +169,11 @@ namespace FBI.Framework
 
 		private void NewServerSqlData(int ServerId, string ServerName)
 		{
-			var db = DManager.QueryFirstRow("SELECT * FROM FBI WHERE ServerId = '{0}'", ServerId);
+			var db = DManager.QueryFirstRow("SELECT * FROM fbi WHERE ServerId = '{0}'", ServerId);
 			if(db.IsNull())
 			{
 				foreach(var function in Enum.GetNames(typeof(IFunctions)))
-					DManager.Insert("`FBI`(ServerId, ServerName, FunctionName, FunctionStatus)", ServerId, ServerName, function.ToLower(), On);
+					DManager.Insert("`fbi`(ServerId, ServerName, FunctionName, FunctionStatus)", ServerId, ServerName, function.ToLower(), On);
 			}
 		}
 
@@ -171,7 +183,7 @@ namespace FBI.Framework
 			{
 				var db = DManager.QueryFirstRow("SELECT * FROM fbi WHERE ServerId = '{0}' And FunctionName = '{1}'", ServerId, function.ToLower());
 				if(db.IsNull())
-					DManager.Insert("`FBI`(ServerId, ServerName, FunctionName, FunctionStatus)", ServerId, ServerName, function.ToLower(), On);
+					DManager.Insert("`fbi`(ServerId, ServerName, FunctionName, FunctionStatus)", ServerId, ServerName, function.ToLower(), On);
 			}
 		}
 

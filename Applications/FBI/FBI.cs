@@ -57,18 +57,6 @@ namespace FBI
 				Log.Debug("FBIBot", sLConsole.FBIBot("Text2"));
 				sFBIBase = new FBIBase();
 
-				var db = FBIBase.DManager.Query("SELECT ServerName FROM servers");
-				if(!db.IsNull())
-				{
-					foreach(DataRow row in db.Rows)
-					{
-						string name = row["ServerName"].ToString();
-						ServerList.List.Add(name, new IrcServer(name));
-					}
-				}
-				else
-					Log.Warning("FBIBot", "Nem áll rendelkezésre irc szerver amit be lehetne tölteni!");
-
 				foreach(var sn in ServerList.List)
 				{
 					if(!e)
