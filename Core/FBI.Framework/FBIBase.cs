@@ -95,7 +95,7 @@ namespace FBI.Framework
 				Log.Notice("FBIBase", sLConsole.FBIBase("Text3"));
 				sLManager.Locale = LocalizationConfig.Locale;
 
-				var db0 = FBIBase.DManager.Query("SELECT ServerName FROM servers");
+				var db0 = DManager.Query("SELECT ServerName FROM servers");
 				if(!db0.IsNull())
 				{
 					foreach(DataRow row in db0.Rows)
