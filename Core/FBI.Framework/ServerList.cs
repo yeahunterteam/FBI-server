@@ -39,6 +39,12 @@ namespace FBI.Framework
 		public static void NewServer(string ServerName)
 		{
 			ServerName = ServerName.ToLower();
+			if(List.ContainsKey(ServerName))
+			{
+				Log.Error("ServerList", "Már szerepel a irc szerver listában ez a szerver!");
+				return;
+			}
+
 			var db = FBIBase.DManager.QueryFirstRow("SELECT * FROM servers WHERE ServerName = '{0}'", ServerName);
 			if(!db.IsNull())
 			{
