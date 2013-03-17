@@ -44,6 +44,8 @@ namespace FBI.Framework.Network
 		public event ServerPacketHandlerDelegate OnCommit;
 		public event ServerPacketHandlerDelegate OnAddChannel;
 		public event ServerPacketHandlerDelegate OnRemoveChannel;
+		public event ServerPacketHandlerDelegate OnAddIrcServer;
+		public event ServerPacketHandlerDelegate OnRemoveIrcServer;
 		private ServerPacketHandler() {}
 
 		public void Init()
@@ -53,6 +55,8 @@ namespace FBI.Framework.Network
 			OnCommit           += CommitHandler;
 			OnAddChannel       += AddChannelHandler;
 			OnRemoveChannel    += RemoveChannelHandler;
+			OnAddIrcServer     += AddIrcServerHandler;
+			OnRemoveIrcServer  += RemoveIrcServerHandler;
 		}
 
 		public void HandlePacket(FBIPacket packet, TcpClient client, NetworkStream stream)
@@ -90,6 +94,10 @@ namespace FBI.Framework.Network
 				OnAddChannel(packet, stream, hst, bck);
 			else if(packetid == (int)Opcode.CMSG_REQUEST_CHANNEL_REMOVE)
 				OnRemoveChannel(packet, stream, hst, bck);
+			else if(packetid == (int)Opcode.CMSG_REQUEST_IRCSERVER_ADD)
+				OnAddIrcServer(packet, stream, hst, bck);
+			else if(packetid == (int)Opcode.CMSG_REQUEST_IRCSERVER_REMOVE)
+				OnRemoveIrcServer(packet, stream, hst, bck);
 		}
 
 		private void AuthRequestPacketHandler(FBIPacket pck, NetworkStream stream, string hst, int bck)
@@ -290,6 +298,18 @@ namespace FBI.Framework.Network
 				sChannelInfo.ChannelFunctionsReload();
 				Thread.Sleep(1000);
 			}
+		}
+
+		private void AddIrcServerHandler(FBIPacket pck, NetworkStream stream, string hst, int bck)
+		{
+			string ircserver = pck.Read<string>().ToLower();
+			ServerList.NewServer(ircserver);
+		}
+
+		private void RemoveIrcServerHandler(FBIPacket pck, NetworkStream stream, string hst, int bck)
+		{
+			string ircserver = pck.Read<string>().ToLower();
+			ServerList.RemoveServer(ircserver);
 		}
 
 		public void SendPacketBack(FBIPacket packet, NetworkStream stream, string hst, int backport)

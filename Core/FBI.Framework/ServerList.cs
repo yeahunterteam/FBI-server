@@ -78,6 +78,7 @@ namespace FBI.Framework
 			{
 				sIrcBase.Networks[ServerName].DisConnect();
 				List.Remove(ServerName);
+				sIrcBase.Networks.Remove(ServerName);
 			}
 			else
 				Log.Error("ServerList", "Nincs ilyen szerver!");
