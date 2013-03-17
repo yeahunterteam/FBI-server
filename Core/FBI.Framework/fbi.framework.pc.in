@@ -1,0 +1,6 @@
+Name: FBI.Framework
+Description: FBI.Framework
+Version: 4.x
+
+Requires: 
+Libs: -r:@expanded_libdir@/@PACKAGE@/FBI.Framework.dll

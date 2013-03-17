@@ -1,6 +1,6 @@
 #! /bin/sh
 
-PROJECT=Schumix
+PROJECT=FBI
 FILE=
 CONFIGURE=configure.ac
 

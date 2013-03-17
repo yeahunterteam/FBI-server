@@ -1,0 +1,37 @@
+# FBI config file (yaml)
+FBI:
+    Server:
+        Enabled: False
+        Port: 35220
+        Password: FBI
+    Irc:
+        Wait:
+            MessageSending: 400
+        MessageType: Privmsg
+    Log:
+        FileName: FBI.log
+        DateFileName: False
+        MaxFileSize: 100
+        LogLevel: 2
+        LogDirectory: Logs
+        IrcLogDirectory: Channels
+        IrcLog: False
+    MySql:
+        Enabled: False
+        Host: localhost
+        User: root
+        Password: password
+        Database: database
+        Charset: utf8
+    SQLite:
+        Enabled: True
+        FileName: FBI.db3
+    Crash:
+        Directory: Dumps
+    Localization:
+        Locale: enUS
+    Shutdown:
+        MaxMemory: 100
+    Clean:
+        Config: False
+        Database: False
