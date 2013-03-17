@@ -18,12 +18,17 @@
  */
 
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Collections.Generic;
+using FBI.Irc;
+using FBI.Framework.Extensions;
 
 namespace FBI.Framework
 {
 	public sealed class ServerList
 	{
+		private static readonly IrcBase sIrcBase = Singleton<IrcBase>.Instance;
 		public static Dictionary<string, IrcServer> List { get; private set; }
 
 		static ServerList()
@@ -33,7 +38,43 @@ namespace FBI.Framework
 
 		public static void NewServer(string ServerName)
 		{
+			ServerName = ServerName.ToLower();
+			var db = FBIBase.DManager.QueryFirstRow("SELECT * FROM servers WHERE ServerName = '{0}'", ServerName);
+			if(!db.IsNull())
+			{
+				List.Add(ServerName, new IrcServer(ServerName));
+				sIrcBase.NewServer(ServerName, List[ServerName].ServerId(), List[ServerName].Server(), List[ServerName].Port());
+				
+				Task.Factory.StartNew(() =>
+				{
+					int i = 0;
+					sIrcBase.Connect(ServerName);
+						
+					while(!sIrcBase.Networks[ServerName].Online)
+					{
+						if(i >= 30)
+							break;
+							
+						i++;
+						Thread.Sleep(1000);
+					}
+				});
+			}
+			else
+				Log.Error("ServerList", "Nincs ilyen szerver!");
+		}
 
+		public static void RemoveServer(string ServerName)
+		{
+			ServerName = ServerName.ToLower();
+
+			if(List.ContainsKey(ServerName))
+			{
+				sIrcBase.Networks[ServerName].DisConnect();
+				List.Remove(ServerName);
+			}
+			else
+				Log.Error("ServerList", "Nincs ilyen szerver!");
 		}
 	}
 }

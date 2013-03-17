@@ -97,7 +97,7 @@ namespace FBI
 			}
 			catch(Exception e)
 			{
-				Log.Error("FBIBot", sLConsole.Exception("Error"), e/*.Message*/);
+				Log.Error("FBIBot", sLConsole.Exception("Error"), e.Message);
 			}
 		}
 
