@@ -7,8 +7,8 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{A346B21F-17F6-431D-86B7-7B6B2AF02A13}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>FBI.API</RootNamespace>
-    <AssemblyName>FBI.API</AssemblyName>
+    <RootNamespace>FBI.Api</RootNamespace>
+    <AssemblyName>FBI.Api</AssemblyName>
     <ReleaseVersion>4.x</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">

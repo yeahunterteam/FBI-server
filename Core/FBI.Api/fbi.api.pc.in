@@ -3,4 +3,4 @@ Description: FBI.Api
 Version: 4.x
 
 Requires: 
-Libs: -r:@expanded_libdir@/@PACKAGE@/FBI.API.dll
+Libs: -r:@expanded_libdir@/@PACKAGE@/FBI.Api.dll

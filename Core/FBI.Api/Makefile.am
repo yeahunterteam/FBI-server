@@ -6,21 +6,21 @@ EXTRA_DIST =
 if ENABLE_DEBUG_X86
 ASSEMBLY_COMPILER_COMMAND = dmcs
 ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:4 -optimize- -debug "-define:DEBUG"
-ASSEMBLY = ../../Run/Debug/FBI.API.dll
+ASSEMBLY = ../../Run/Debug/FBI.Api.dll
 ASSEMBLY_MDB = $(ASSEMBLY).mdb
 COMPILE_TARGET = library
 PROJECT_REFERENCES = 
 BUILD_DIR = ../../Run/Debug
 
-FBI_API_DLL_MDB_SOURCE=../../Run/Debug/FBI.API.dll.mdb
-FBI_API_DLL_MDB=$(BUILD_DIR)/FBI.API.dll.mdb
+FBI_API_DLL_MDB_SOURCE=../../Run/Debug/FBI.Api.dll.mdb
+FBI_API_DLL_MDB=$(BUILD_DIR)/FBI.Api.dll.mdb
 
 endif
 
 if ENABLE_RELEASE_X86
 ASSEMBLY_COMPILER_COMMAND = dmcs
 ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:4 -optimize+ "-define:RELEASE"
-ASSEMBLY = ../../Run/Release/FBI.API.dll
+ASSEMBLY = ../../Run/Release/FBI.Api.dll
 ASSEMBLY_MDB = 
 COMPILE_TARGET = library
 PROJECT_REFERENCES = 
@@ -33,21 +33,21 @@ endif
 if ENABLE_DEBUG_X64
 ASSEMBLY_COMPILER_COMMAND = dmcs
 ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:4 -optimize- -debug "-define:DEBUG"
-ASSEMBLY = ../../Run/Debug_x64/FBI.API.dll
+ASSEMBLY = ../../Run/Debug_x64/FBI.Api.dll
 ASSEMBLY_MDB = $(ASSEMBLY).mdb
 COMPILE_TARGET = library
 PROJECT_REFERENCES = 
 BUILD_DIR = ../../Run/Debug_x64
 
-FBI_API_DLL_MDB_SOURCE=../../Run/Debug_x64/FBI.API.dll.mdb
-FBI_API_DLL_MDB=$(BUILD_DIR)/FBI.API.dll.mdb
+FBI_API_DLL_MDB_SOURCE=../../Run/Debug_x64/FBI.Api.dll.mdb
+FBI_API_DLL_MDB=$(BUILD_DIR)/FBI.Api.dll.mdb
 
 endif
 
 if ENABLE_RELEASE_X64
 ASSEMBLY_COMPILER_COMMAND = dmcs
 ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:4 -optimize+ "-define:RELEASE"
-ASSEMBLY = ../../Run/Release_x64/FBI.API.dll
+ASSEMBLY = ../../Run/Release_x64/FBI.Api.dll
 ASSEMBLY_MDB = 
 COMPILE_TARGET = library
 PROJECT_REFERENCES = 

@@ -10,8 +10,8 @@
 Run/
 
 # build stuff
-Applications/Schumix.Client/schumix.client
-Applications/Schumix/schumix
+Applications/FBI.Client/FBI.client
+Applications/FBI/FBI
 
 #ignore thumbnails created by windows
 Thumbs.db
