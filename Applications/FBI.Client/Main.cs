@@ -206,8 +206,10 @@ namespace FBI.Client
 					sPackets.RemoveChannel(channels, ircserver);
 					break;
 				case "0x11":
+					sPackets.AddIrcServer(ircserver);
 					break;
 				case "0x12":
+					sPackets.RemoveIrcServer(ircserver);
 					break;
 				}
 			}

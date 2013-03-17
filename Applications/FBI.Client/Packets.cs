@@ -62,6 +62,22 @@ namespace FBI.Client
 			ClientSocket.SendPacketToSCS(packet);
 		}
 
+		public void AddIrcServer(string ircserver)
+		{
+			var packet = new FBIPacket();
+			packet.Write<int>((int)Opcode.CMSG_REQUEST_IRCSERVER_ADD);
+			packet.Write<string>(ircserver);
+			ClientSocket.SendPacketToSCS(packet);
+		}
+
+		public void RemoveIrcServer(string ircserver)
+		{
+			var packet = new FBIPacket();
+			packet.Write<int>((int)Opcode.CMSG_REQUEST_IRCSERVER_REMOVE);
+			packet.Write<string>(ircserver);
+			ClientSocket.SendPacketToSCS(packet);
+		}
+
 		public void Close()
 		{
 			var packet = new FBIPacket();
