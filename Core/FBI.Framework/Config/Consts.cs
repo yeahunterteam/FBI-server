@@ -24,7 +24,7 @@ namespace FBI.Framework.Config
 	public static class Consts
 	{
 		private static readonly Utilities sUtilities = Singleton<Utilities>.Instance;
-		public const string FBIDescription = "FBI IRC bot";
+		public const string FBIDescription = "FBI IRC bot and Framework";
 #if DEBUG
 		public const string FBIConfiguration = "Debug";
 #else
