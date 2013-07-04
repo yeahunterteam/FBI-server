@@ -21,7 +21,7 @@ using System;
 using System.Data;
 using System.Threading;
 using System.Threading.Tasks;
-using FBI.Irc;
+using FBI.Framework.Irc;
 using FBI.Framework;
 using FBI.Framework.Config;
 using FBI.Framework.Database;

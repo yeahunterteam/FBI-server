@@ -22,7 +22,7 @@ using FBI.Framework;
 using FBI.Framework.Config;
 using FBI.Framework.Localization;
 
-namespace FBI.Irc
+namespace FBI.Framework.Irc
 {
 	public sealed class NickInfo
 	{

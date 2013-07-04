@@ -19,7 +19,7 @@
 
 using System;
 using System.Threading;
-using FBI.Irc;
+using FBI.Framework.Irc;
 using FBI.Framework;
 using FBI.Framework.Config;
 using FBI.Framework.Extensions;

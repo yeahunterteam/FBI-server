@@ -18,7 +18,7 @@
  * along with FBI.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace FBI.Irc
+namespace FBI.Framework.Irc
 {
 	/// <summary>
 	///   Numeric message codes taken from RFC 2812

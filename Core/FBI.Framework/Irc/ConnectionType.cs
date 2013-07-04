@@ -19,7 +19,7 @@
 
 using System;
 
-namespace FBI.Irc
+namespace FBI.Framework.Irc
 {
 	public enum ConnectionType
 	{

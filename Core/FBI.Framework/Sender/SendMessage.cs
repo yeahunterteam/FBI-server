@@ -28,7 +28,7 @@ using FBI.Framework.Config;
 using FBI.Framework.Extensions;
 using FBI.Framework.Localization;
 
-namespace FBI.Irc
+namespace FBI.Framework.Irc
 {
 	public sealed class SendMessage
 	{

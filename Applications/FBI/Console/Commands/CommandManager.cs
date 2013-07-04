@@ -22,7 +22,7 @@ using System.IO;
 using System.Text;
 using System.Linq;
 using System.Collections.Generic;
-using FBI.Irc;
+using FBI.Framework.Irc;
 using FBI.Framework;
 using FBI.Framework.Localization;
 

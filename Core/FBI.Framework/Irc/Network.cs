@@ -37,7 +37,7 @@ using FBI.Framework.Delegate;
 using FBI.Framework.Functions;
 using FBI.Framework.Extensions;
 
-namespace FBI.Irc
+namespace FBI.Framework.Irc
 {
 	public sealed class Network : MessageHandler
 	{

@@ -23,7 +23,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Collections.Generic;
-using FBI.Irc;
+using FBI.Framework.Irc;
 using FBI.Framework.Clean;
 using FBI.Framework.Config;
 using FBI.Framework.Network;

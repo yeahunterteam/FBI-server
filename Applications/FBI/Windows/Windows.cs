@@ -21,7 +21,7 @@ using System;
 using System.Threading;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
-using FBI.Irc;
+using FBI.Framework.Irc;
 using FBI.Framework;
 using FBI.Framework.Extensions;
 

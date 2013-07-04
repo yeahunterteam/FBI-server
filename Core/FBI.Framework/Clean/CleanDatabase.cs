@@ -20,7 +20,7 @@
 using System;
 using System.Data;
 using System.Collections.Generic;
-using FBI.Irc;
+using FBI.Framework.Irc;
 using FBI.Framework.Config;
 using FBI.Framework.Extensions;
 using FBI.Framework.Localization;

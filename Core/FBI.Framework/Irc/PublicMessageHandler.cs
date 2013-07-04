@@ -25,7 +25,7 @@ using FBI.Framework.Config;
 using FBI.Framework.Functions;
 using FBI.Framework.Extensions;
 
-namespace FBI.Irc
+namespace FBI.Framework.Irc
 {
 	public abstract partial class MessageHandler
 	{

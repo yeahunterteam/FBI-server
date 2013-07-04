@@ -26,7 +26,7 @@ using FBI.Framework.Functions;
 using FBI.Framework.Extensions;
 using FBI.Framework.Localization;
 
-namespace FBI.Irc
+namespace FBI.Framework.Irc
 {
 	public sealed class ChannelInfo
 	{

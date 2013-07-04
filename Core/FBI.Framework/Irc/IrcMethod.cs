@@ -23,7 +23,7 @@ using System.Collections.Generic;
 using FBI.Framework;
 using FBI.Framework.Delegate;
 
-namespace FBI.Irc
+namespace FBI.Framework.Irc
 {
 	public sealed class IrcMethod
 	{

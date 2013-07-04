@@ -22,7 +22,7 @@ using System.Threading;
 using System.Diagnostics;
 using Mono.Unix;
 using Mono.Unix.Native;
-using FBI.Irc;
+using FBI.Framework.Irc;
 using FBI.Framework;
 using FBI.Framework.Extensions;
 

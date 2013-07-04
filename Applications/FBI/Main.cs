@@ -23,7 +23,7 @@ using System.Text;
 using System.Threading;
 using System.Diagnostics;
 using System.Globalization;
-using FBI.Irc;
+using FBI.Framework.Irc;
 using FBI.Framework;
 using FBI.Framework.Config;
 using FBI.Framework.Extensions;
