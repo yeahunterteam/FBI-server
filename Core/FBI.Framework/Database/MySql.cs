@@ -25,8 +25,8 @@ using System.Diagnostics;
 using System.Text.RegularExpressions;
 using MySql.Data;
 using MySql.Data.MySqlClient;
-using FBI.Api;
-using FBI.Api.Irc;
+using FBI.Framework;
+using FBI.Framework.Irc;
 using FBI.Framework.Extensions;
 using FBI.Framework.Localization;
 

@@ -18,9 +18,9 @@
  */
 
 using System;
-using FBI.Api.Irc;
+using FBI.Framework.Irc;
 
-namespace FBI.Api.Delegate
+namespace FBI.Framework.Delegate
 {
 	public delegate void IRCDelegate(IRCMessage sIRCMessage);
 }

@@ -21,7 +21,7 @@ using System;
 using System.Threading;
 using System.Diagnostics;
 using System.Collections.Generic;
-using FBI.Api.Delegate;
+using FBI.Framework.Delegate;
 using FBI.Framework;
 using FBI.Framework.Config;
 using FBI.Framework.Extensions;

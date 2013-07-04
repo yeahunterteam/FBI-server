@@ -22,11 +22,10 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
-using FBI.Api;
-using FBI.Api.Irc;
-using FBI.Api.Functions;
 using FBI.Framework;
+using FBI.Framework.Irc;
 using FBI.Framework.Config;
+using FBI.Framework.Functions;
 using FBI.Framework.Extensions;
 using FBI.Framework.Localization;
 

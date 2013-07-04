@@ -19,18 +19,13 @@
 
 using System;
 
-namespace FBI.Api.Irc
+namespace FBI.Framework.Functions
 {
-	/// <summary>
-	///     Meghatározza az üzenet küldési típusokat.
-	/// </summary>
-	public enum MessageType
+	public enum IFunctions
 	{
-		Privmsg,
-		Notice,
-		Amsg,
-		Action,
-		CtcpRequest,
-		CtcpReply
+		Log,
+		Rejoin,
+		Commands,
+		Reconnect
 	};
 }

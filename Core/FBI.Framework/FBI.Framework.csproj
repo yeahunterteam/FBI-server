@@ -130,14 +130,16 @@
     <Compile Include="Irc\NickInfo.cs" />
     <Compile Include="Irc\PublicMessageHandler.cs" />
     <Compile Include="Irc\ReplyCode.cs" />
+    <Compile Include="Delegate\IRCDelegate.cs" />
+    <Compile Include="Functions\IChannelFunctions.cs" />
+    <Compile Include="Functions\IFunctions.cs" />
+    <Compile Include="Functions\IFunctionsClass.cs" />
+    <Compile Include="Functions\IFunctionsClassBase.cs" />
+    <Compile Include="Irc\INetwork.cs" />
+    <Compile Include="Irc\IRCMessage.cs" />
+    <Compile Include="Irc\MessageType.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup>
-    <ProjectReference Include="..\FBI.Api\FBI.Api.csproj">
-      <Project>{A346B21F-17F6-431D-86B7-7B6B2AF02A13}</Project>
-      <Name>FBI.Api</Name>
-    </ProjectReference>
-  </ItemGroup>
   <ItemGroup />
   <ItemGroup>
     <None Include="..\..\Dependencies\sqlite3.dll">

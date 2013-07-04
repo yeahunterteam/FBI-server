@@ -23,14 +23,13 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Collections.Generic;
-using FBI.Api;
-using FBI.Api.Functions;
 using FBI.Irc;
 using FBI.Framework.Clean;
 using FBI.Framework.Config;
 using FBI.Framework.Network;
 using FBI.Framework.Database;
 using FBI.Framework.Database.Cache;
+using FBI.Framework.Functions;
 using FBI.Framework.Extensions;
 using FBI.Framework.Localization;
 

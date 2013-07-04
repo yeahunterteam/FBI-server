@@ -24,7 +24,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Reflection;
 using System.Diagnostics;
-using FBI.Api.Delegate;
+using FBI.Framework.Delegate;
 using FBI.Irc;
 using FBI.Framework;
 using FBI.Framework.Config;

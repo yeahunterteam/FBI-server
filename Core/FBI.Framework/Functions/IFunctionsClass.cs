@@ -18,13 +18,12 @@
  */
 
 using System;
+using System.Collections.Generic;
 
-namespace FBI.Api.Functions
+namespace FBI.Framework.Functions
 {
-	public enum IChannelFunctions
+	public class IFunctionsClass
 	{
-		Log,
-		Rejoin,
-		Commands
-	};
+		public static readonly Dictionary<string, IFunctionsClassBase> ServerList = new Dictionary<string, IFunctionsClassBase>();
+	}
 }

@@ -29,13 +29,12 @@ using System.Net.Security;
 using System.Reflection;
 using System.Collections.Generic;
 using System.Security.Authentication;
-using FBI.Api;
-using FBI.Api.Irc;
-using FBI.Api.Delegate;
-using FBI.Api.Functions;
 using FBI.Framework;
+using FBI.Framework.Irc;
 using FBI.Framework.Config;
 using FBI.Framework.Database;
+using FBI.Framework.Delegate;
+using FBI.Framework.Functions;
 using FBI.Framework.Extensions;
 
 namespace FBI.Irc

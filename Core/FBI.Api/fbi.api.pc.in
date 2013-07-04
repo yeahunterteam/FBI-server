@@ -1,6 +1,0 @@
-Name: FBI.Api
-Description: FBI.Api
-Version: 4.x
-
-Requires: 
-Libs: -r:@expanded_libdir@/@PACKAGE@/FBI.Api.dll

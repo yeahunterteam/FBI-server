@@ -18,20 +18,17 @@
  */
 
 using System;
+using System.Collections.Generic;
 
-namespace FBI.Api.Irc
+namespace FBI.Framework.Functions
 {
-	public class IRCMessage
+	public class IFunctionsClassBase
 	{
-		public string Hostmask { get; set; }
-		public string Channel { get; set; }
-		public string Args { get; set; }
-		public string Nick { get; set; }
-		public string User { get; set; }
-		public string Host { get; set; }
-		public string[] Info { get; set; }
-		public int ServerId { get; set; }
-		public string ServerName { get; set; }
-		public MessageType MessageType { get; set; }
+		public Dictionary<string, string> Functions { get; private set; }
+
+		public IFunctionsClassBase(Dictionary<string, string> functions)
+		{
+			Functions = functions;
+		}
 	}
 }

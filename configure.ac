@@ -67,11 +67,8 @@ dnl package checks, per config
 
 
 AC_CONFIG_FILES([
-Core/FBI.Api/fbi.api.pc
-Core/FBI.Api/Makefile
 Core/FBI.Framework/fbi.framework.pc
 Core/FBI.Framework/Makefile
-Core/Makefile
 Applications/FBI/fbi
 Applications/FBI/Makefile
 Applications/FBI.Client/fbi.client

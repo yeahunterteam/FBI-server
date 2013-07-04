@@ -18,12 +18,19 @@
  */
 
 using System;
-using System.Collections.Generic;
 
-namespace FBI.Api.Functions
+namespace FBI.Framework.Irc
 {
-	public class IFunctionsClass
+	/// <summary>
+	///     Meghatározza az üzenet küldési típusokat.
+	/// </summary>
+	public enum MessageType
 	{
-		public static readonly Dictionary<string, IFunctionsClassBase> ServerList = new Dictionary<string, IFunctionsClassBase>();
-	}
+		Privmsg,
+		Notice,
+		Amsg,
+		Action,
+		CtcpRequest,
+		CtcpReply
+	};
 }

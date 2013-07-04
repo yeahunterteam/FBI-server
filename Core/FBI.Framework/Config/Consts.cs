@@ -34,8 +34,8 @@ namespace FBI.Framework.Config
 		public const string FBIProduct = "FBI";
 		public const string FBICopyright = "Copyright (C) 2010-2012 Megax <http://megax.yeahunter.hu/>";
 		public const string FBITrademark = "GNU General Public License";
-		public const string FBIVersion = "4.1.0";
-		public const string FBIFileVersion = "4.1.0.0";
+		public const string FBIVersion = "4.1.1";
+		public const string FBIFileVersion = "4.1.1.0";
 		public const string FBIProgrammedBy = "Csaba Jakosa (Megax)";
 		public const string FBIDevelopers = "Csaba Jakosa (Megax), Twl, Jackneill, Invisible";
 		public const string FBIWebsite = "https://github.com/FBI/FBI2";

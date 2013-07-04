@@ -24,8 +24,8 @@ using System.Diagnostics;
 using System.Data;
 using System.Data.SQLite;
 using System.Text.RegularExpressions;
-using FBI.Api;
-using FBI.Api.Irc;
+using FBI.Framework;
+using FBI.Framework.Irc;
 using FBI.Framework.Extensions;
 using FBI.Framework.Localization;
 

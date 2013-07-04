@@ -18,17 +18,19 @@
  */
 
 using System;
+using System.IO;
 using System.Collections.Generic;
 
-namespace FBI.Api.Functions
+namespace FBI.Framework.Irc
 {
-	public class IFunctionsClassBase
+	/// <summary>
+	///     A Network class része. Ezzel elérhető bárhonnét eggyes része.
+	/// </summary>
+	public sealed class INetwork
 	{
-		public Dictionary<string, string> Functions { get; private set; }
-
-		public IFunctionsClassBase(Dictionary<string, string> functions)
-		{
-			Functions = functions;
-		}
+		/// <summary>
+		///     Üzenet küldés az irc szerver felé.
+		/// </summary>
+		public static Dictionary<string, StreamWriter> WriterList = new Dictionary<string, StreamWriter>();
 	}
 }

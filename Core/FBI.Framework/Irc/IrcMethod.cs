@@ -20,8 +20,8 @@
 using System;
 using System.Reflection;
 using System.Collections.Generic;
-using FBI.Api;
-using FBI.Api.Delegate;
+using FBI.Framework;
+using FBI.Framework.Delegate;
 
 namespace FBI.Irc
 {

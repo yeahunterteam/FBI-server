@@ -10,8 +10,7 @@ ASSEMBLY = ../../Run/Debug/FBI.exe
 ASSEMBLY_MDB = $(ASSEMBLY).mdb
 COMPILE_TARGET = exe
 PROJECT_REFERENCES =  \
-	../../Run/Debug/FBI.Framework.dll \
-	../../Run/Debug/FBI.Api.dll
+	../../Run/Debug/FBI.Framework.dll
 BUILD_DIR = ../../Run/Debug
 
 FBI_EXE_MDB_SOURCE=../../Run/Debug/FBI.exe.mdb
@@ -26,9 +25,6 @@ MYSQL_DATA_DLL_SOURCE=../../Dependencies/MySql.Data.dll
 SYSTEM_DATA_SQLITE_DLL_SOURCE=../../Dependencies/System.Data.SQLite.dll
 YAMLDOTNET_CORE_DLL_SOURCE=../../Dependencies/YamlDotNet.Core.dll
 YAMLDOTNET_REPRESENTATIONMODEL_DLL_SOURCE=../../Dependencies/YamlDotNet.RepresentationModel.dll
-FBI_API_DLL_SOURCE=../../Run/Debug/FBI.Api.dll
-FBI_API_DLL_MDB_SOURCE=../../Run/Debug/FBI.Api.dll.mdb
-FBI_API_DLL_MDB=$(BUILD_DIR)/FBI.Api.dll.mdb
 
 endif
 
@@ -39,8 +35,7 @@ ASSEMBLY = ../../Run/Release/FBI.exe
 ASSEMBLY_MDB = 
 COMPILE_TARGET = exe
 PROJECT_REFERENCES =  \
-	../../Run/Release/FBI.Framework.dll \
-	../../Run/Release/FBI.Api.dll
+	../../Run/Release/FBI.Framework.dll
 BUILD_DIR = ../../Run/Release
 
 FBI_EXE_MDB=
@@ -53,8 +48,6 @@ MYSQL_DATA_DLL_SOURCE=../../Dependencies/MySql.Data.dll
 SYSTEM_DATA_SQLITE_DLL_SOURCE=../../Dependencies/System.Data.SQLite.dll
 YAMLDOTNET_CORE_DLL_SOURCE=../../Dependencies/YamlDotNet.Core.dll
 YAMLDOTNET_REPRESENTATIONMODEL_DLL_SOURCE=../../Dependencies/YamlDotNet.RepresentationModel.dll
-FBI_API_DLL_SOURCE=../../Run/Release/FBI.Api.dll
-FBI_API_DLL_MDB=
 
 endif
 
@@ -65,8 +58,7 @@ ASSEMBLY = ../../Run/Debug_x64/FBI.exe
 ASSEMBLY_MDB = $(ASSEMBLY).mdb
 COMPILE_TARGET = exe
 PROJECT_REFERENCES =  \
-	../../Run/Debug_x64/FBI.Framework.dll \
-	../../Run/Debug_x64/FBI.Api.dll
+	../../Run/Debug_x64/FBI.Framework.dll
 BUILD_DIR = ../../Run/Debug_x64
 
 FBI_EXE_MDB_SOURCE=../../Run/Debug_x64/FBI.exe.mdb
@@ -81,9 +73,6 @@ MYSQL_DATA_DLL_SOURCE=../../Dependencies/MySql.Data.dll
 SYSTEM_DATA_SQLITE_DLL_SOURCE=../../Dependencies/System.Data.SQLite.dll
 YAMLDOTNET_CORE_DLL_SOURCE=../../Dependencies/YamlDotNet.Core.dll
 YAMLDOTNET_REPRESENTATIONMODEL_DLL_SOURCE=../../Dependencies/YamlDotNet.RepresentationModel.dll
-FBI_API_DLL_SOURCE=../../Run/Debug_x64/FBI.Api.dll
-FBI_API_DLL_MDB_SOURCE=../../Run/Debug_x64/FBI.Api.dll.mdb
-FBI_API_DLL_MDB=$(BUILD_DIR)/FBI.Api.dll.mdb
 
 endif
 
@@ -94,8 +83,7 @@ ASSEMBLY = ../../Run/Release_x64/FBI.exe
 ASSEMBLY_MDB = 
 COMPILE_TARGET = exe
 PROJECT_REFERENCES =  \
-	../../Run/Release_x64/FBI.Framework.dll \
-	../../Run/Release_x64/FBI.Api.dll
+	../../Run/Release_x64/FBI.Framework.dll
 BUILD_DIR = ../../Run/Release_x64
 
 FBI_EXE_MDB=
@@ -108,8 +96,6 @@ MYSQL_DATA_DLL_SOURCE=../../Dependencies/MySql.Data.dll
 SYSTEM_DATA_SQLITE_DLL_SOURCE=../../Dependencies/System.Data.SQLite.dll
 YAMLDOTNET_CORE_DLL_SOURCE=../../Dependencies/YamlDotNet.Core.dll
 YAMLDOTNET_REPRESENTATIONMODEL_DLL_SOURCE=../../Dependencies/YamlDotNet.RepresentationModel.dll
-FBI_API_DLL_SOURCE=../../Run/Release_x64/FBI.Api.dll
-FBI_API_DLL_MDB=
 
 endif
 
@@ -126,9 +112,7 @@ PROGRAMFILES = \
 	$(MYSQL_DATA_DLL) \
 	$(SYSTEM_DATA_SQLITE_DLL) \
 	$(YAMLDOTNET_CORE_DLL) \
-	$(YAMLDOTNET_REPRESENTATIONMODEL_DLL) \
-	$(FBI_API_DLL) \
-	$(FBI_API_DLL_MDB)  
+	$(YAMLDOTNET_REPRESENTATIONMODEL_DLL)  
 
 BINARIES = \
 	$(FBI)  
@@ -182,7 +166,6 @@ MYSQL_DATA_DLL = $(BUILD_DIR)/MySql.Data.dll
 SYSTEM_DATA_SQLITE_DLL = $(BUILD_DIR)/System.Data.SQLite.dll
 YAMLDOTNET_CORE_DLL = $(BUILD_DIR)/YamlDotNet.Core.dll
 YAMLDOTNET_REPRESENTATIONMODEL_DLL = $(BUILD_DIR)/YamlDotNet.RepresentationModel.dll
-FBI_API_DLL = $(BUILD_DIR)/FBI.Api.dll
 FBI = $(BUILD_DIR)/fbi
 
 $(eval $(call emit-deploy-target,MONO_POSIX_DLL))
